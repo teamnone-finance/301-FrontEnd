@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Team None Stock Market
+Code Fellows 301 Final Project
 
-## Available Scripts
+##Team Members
+• Reina
+• Robert
+• Vinh
+• Luke
 
-In the project directory, you can run:
+##Project Description
+None Stock Market is a tool that helps you look at the state of the various indexes of US markets and gives you some tools to decide what potential investments you could make. You can also make a portfolio of stocks you want to keep an eye on or have already invested in.
 
-### `npm start`
+##Problem Domain
+People are always looking for a better way to determine what to invest in. There are countless tools out there to aid in making this determination.  Our tool offers a clean and concise way to keep track of the market, news, and stocks of interest. 
+As we began thinking through the problem more thoroughly we realized a tool such as ours could be expanded to cover more than just the US market (for example the Hong Kong stock exchange). 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##User Stories
+• As a user, I want to see a homepage that is easily understood and interacting with it is intuitive.
+• As a user, I want to see a navigation bar on the homepage, so that I can navigate to the different pages within the website.
+• As a user, I want to be able to see that state of the markets worldwide from the homepage.
+• As a user, I want to be able to search for stocks based on the company name or their ticker.
+• As a user, on the specific stock’s page, I would like to be able to see all of the pertinent information that I would need to make a good investment decision.
+• As a user, I would like an advanced search option where I could search based on categories of stocks (i.e. risk level, price range, small or large cap, etc.)
+• As a user, I would like to make a portfolio of either stocks I own, or stocks on my watch list.
+• As a user, I would like to see up to date information on the individual stocks (when the market is open, possibly after hours).
+• As a user, I would like to be able to edit my portfolio, add and delete.
+• As a user, I would like to be able to log in and out to see my portfolio.
+• As a user, I would like to query historical data to see hypothetically how much I could have made if I invested in the past (stretch). 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+##Acknowledgments
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+##License
+This project is licensed under the MIT License - see the LICENSE file for details.

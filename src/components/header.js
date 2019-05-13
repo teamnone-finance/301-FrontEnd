@@ -3,8 +3,8 @@ import React from 'react';
 const Header = props => {
   return (
     <header>
-      <h1>City Explorer</h1>
-      <p>Enter a location below to learn about the weather, events, restaurants, movies filmed there, and more!</p>
+      <h1>Market App</h1>
+      <p>This is Team None</p>
     </header>
   );
 };

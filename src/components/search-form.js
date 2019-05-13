@@ -12,16 +12,16 @@ class SearchForm extends React.Component {
     };
   }
 
-  handleSearchKeyword = e => {
-    let search_query = e.target.value;
-    this.setState({ search_query });
-  };
+  // handleSearchKeyword = e => {
+  //   let search_query = e.target.value;
+  //   this.setState({ search_query });
+  // };
 
   handleSubmit = async e => {
     e.preventDefault();
-    let query = this.state.search_query;
 
-    let locationData = await superagent.get(`${__API_URL__}`);
+    let APIData = await superagent.get(`${__API_URL__}`);
+    console.log(APIData.text);
 
     // let locationData = await superagent.get(`${__API_URL__}/location`).query({ data : query });
     // let weatherData = await superagent.get(`${__API_URL__}/weather`).query({data : locationData.body});
@@ -29,14 +29,9 @@ class SearchForm extends React.Component {
     // let moviesData = await superagent.get(`${__API_URL__}/movies`).query({data : locationData.body});
     // let eventsData = await superagent.get(`${__API_URL__}/events`).query({data : locationData.body});
 
-    console.log(weatherData);
 
     let apiResults = {
-      location: locationData.body,
-      weather: weatherData.body,
-      yelp: yelpData.body,
-      events: eventsData.body,
-      movies: moviesData.body
+      sample: APIData.text
     }
 
     console.log('API RESULTS : ',apiResults);
@@ -46,8 +41,8 @@ class SearchForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleSearchKeyword} />
-        <button onClick={this.handleSubmit}>Search</button>
+        {/* <input onChange={this.handleSearchKeyword} /> */}
+        <button onClick={this.handleSubmit}>Sample</button>
       </form>
     );
   }

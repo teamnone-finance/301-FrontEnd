@@ -1,0 +1,35 @@
+
+#generalNews {
+  width: 400px;
+  height: 660px;
+  border: 1px solid lightgray;
+  background-color: white;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+#generalNewsImg {
+  width: 200px;
+}
+
+
+#nav li a {
+  color: aliceblue;
+  background-color: darkblue;
+  text-decoration: none;
+  padding: 1.2vw;
+  font-size: 1.5vw;
+  text-align: center;
+  padding-left: 1.3vw;
+
+  &:hover {
+    background: white;
+    color: black;
+  }
+}
+
+#nav li{
+  display: inline-block;
+  margin-top: 1vw;
+  
+}

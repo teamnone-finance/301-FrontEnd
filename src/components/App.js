@@ -4,15 +4,15 @@ import SearchForm from './search-form.js';
 import superagent from 'superagent';
 import NewPortfolio from './newPortfolio.js';
 import LoginPage from './loginPage.js';
+import ChartandFeed from './chartAndFeed.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sample: 'blob',
       user: {
         loggedIn: false,
-        userName: ''
+        name: ''
       }
     };
   }
@@ -44,11 +44,12 @@ class App extends React.Component {
     if (this.state.user.loggedIn) {
       return (
         <>
-          <Header />
+          <Header loggedIn={this.state.loggedIn} callback={this.setStateData} />
           <SearchForm callback={this.setStateData} />
           {this.state.sample}
           <p>This is happening</p>
           {/* <Portfolio user={this.state.userName} /> */}
+          <ChartandFeed />
         </>
       );
     } else {
@@ -60,6 +61,7 @@ class App extends React.Component {
           <p>Need to create user and log in</p>
           <NewPortfolio />
           <LoginPage updateState={this.setStateData} />
+          <ChartandFeed />
         </>
       );
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header.js';
 import SearchForm from './search-form.js';
 import ChartandFeed from './chartAndFeed.js';
+import Footer from './footer.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class App extends React.Component {
         <SearchForm callback={this.setStateData} />
         {this.state.sample}  
         <ChartandFeed/>
+        <Footer />
       </>
     );
   }

@@ -15,21 +15,22 @@
 
 #nav li a {
   color: aliceblue;
-  background-color: darkblue;
   text-decoration: none;
-  padding: 1.2vw;
   font-size: 1.5vw;
   text-align: center;
-  padding-left: 1.3vw;
+  
+ 
+}
+
+#nav li{
+  display: inline-block;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
 
   &:hover {
     background: white;
     color: black;
   }
-}
-
-#nav li{
-  display: inline-block;
-  margin-top: 1vw;
-  
 }

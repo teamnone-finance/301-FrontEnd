@@ -8,7 +8,7 @@ export default class Footer extends React.Component {
 
   return (
     <footer>
-      &c bubbles
+     <p>Bookworm &copy; 2019</p>
     </footer>
   );
   }

@@ -11,9 +11,28 @@ class Feed extends React.Component {
   }
   
   setNews = async event => {
-    let newsData = await superagent.get(`https://stocknewsapi.com//api/v1/category?section=general&items=5&token=${process.env.REACT_APP_NEWS_API_KEY}`);    
-      this.setState({newsResults: newsData.body.data})
-      console.log(newsData);
+    // let newsData = await superagent.get(`https://stocknewsapi.com//api/v1/category?section=general&items=5&token=${process.env.REACT_APP_NEWS_API_KEY}`);
+      let newsData = await superagent.get(`https://newsapi.org/v2/everything?q=stocks+finance&from=2019-05-13&to=2019-05-14&sortBy=popularity&apiKey=${process.env.REACT_APP_GN_API_KEY}`);  
+      this.setState({newsResults: newsData.body.articles});
+      console.log(this.state.newsResults);
+      let newsArr = [];
+
+      // for(let i = 0; i < newsData.body.articles.length; i++){
+      //   newsArr.push(
+      //     <div>
+      //        <li key={i}>
+      //           <a href={ val.url }>{ val.title }</a>
+      //           <img className='generalNewsImg' alt='news' src={val.urlToImage}/>
+      //           <p>{ val.description }</p>
+      //           <p>{ val.source }</p>
+      //           <p>{ val.publishedAt }</p>
+      //       </li>
+      //   </div>
+      //   );
+      // }
+
+
+      console.log( newsData.body);
   };
 
   componentDidMount() {
@@ -31,19 +50,20 @@ class Feed extends React.Component {
     return (
       <section id='generalNews' className='newsfeed-container'>
       <h2>Market News Feed</h2>
-    {this.state.newsResults.map((val, idx) => {
+      <ul id="news">
+      {this.state.newsResults.map((val, idx) => {
       return (
-        <div>
-             <li key={idx}>
-                <a href={ val.news_url }>{ val.title }</a>
-                <img id='generalNewsImg' alt='news' src={val.image_url}/>
-                <p>{ val.text }</p>
-                <p>{ val.source_name }</p>
-                <p>{ val.date }</p>
-            </li>
-        </div>
-        );
-      })}
+         <li key={idx}>
+            <a href={ val.url }>{ val.title }</a>
+            <img id='generalNewsImg' alt='news' src={val.urlToImage}/>
+            <p>{ val.description }</p>
+            <p>{ val.source.name }</p>
+            <p>{ val.publishedAt }</p>
+        </li>
+    );
+    })}
+      </ul>
+    
     </section>
     )
   }

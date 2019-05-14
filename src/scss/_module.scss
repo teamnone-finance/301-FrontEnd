@@ -1,3 +1,4 @@
+
 #generalNews {
   width: 400px;
   height: 660px;
@@ -11,3 +12,22 @@
   width: 200px;
 }
 
+
+li a {
+  color: aliceblue;
+  background-color: darkblue;
+  text-decoration: none;
+  padding: 1.2vw;
+  font-size: 1.5vw;
+  text-align: center;
+
+  &:hover {
+    background: white;
+    color: black;
+  }
+}
+
+#nav li{
+  display: inline-block;
+  margin-top: 1vw;
+}

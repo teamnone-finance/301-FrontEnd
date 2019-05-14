@@ -30,7 +30,9 @@ class App extends React.Component {
     let dbCheckResponse = await superagent
       .get('https://market-app-backend.herokuapp.com/user')
       .query({ username: this.state.user.name });
-    if (dbCheckResponse.rowCount > 0) {
+    console.log('query response', dbCheckResponse);
+    if (dbCheckResponse.body.rowCount > 0) {
+      console.log(`user in db`);
       this.setStateData('loggedIn', true);
       //load portfolio page
     } else {
@@ -63,7 +65,10 @@ class App extends React.Component {
     } else {
       return (
         <>
-          <Header />
+          <Header
+            handleLogin={this.handleLoggedStatus}
+            updateState={this.setStateData}
+          />
           <SearchForm callback={this.setStateData} />
           {this.state.sample}
           <p>Need to create user and log in</p>
@@ -81,3 +86,15 @@ class App extends React.Component {
 } //end of <App>
 
 export default App;
+
+// if (logged in){
+//   if (portfolio){
+//     if (items in portfolio){
+//       display portfolio;
+//     } else {
+//         add to portfolio;
+//     }
+//   } else {
+//     create a portfolio;
+//   }
+// }

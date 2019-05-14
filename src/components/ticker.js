@@ -3,13 +3,13 @@ import React from 'react';
 export default class Ticker extends React.Component {
   componentDidMount() {
     if (!window.doBuild) {
-      this.preloadWidgetScript();
+      this.preLoadScript();
     } else {
       window.doBuild();
     }
   }
   
-  preloadWidgetScript = () => {
+  preLoadScript = () => {
     const script = document.createElement('script');
     script.async = true;
     script.dataset.pinBuild = 'doBuild';
@@ -58,15 +58,15 @@ export default class Ticker extends React.Component {
       "displayMode": "adaptive",
       "locale": "en"
     }`;
-    const ticker = document.getElementsByClassName('ticker');
-    document.body.appendChild(script);
+    const ticker = document.getElementById('ticker');
+    ticker.appendChild(script);
     console.log(script);
   }
 
   render() {
     const { url } = this.props
 
-    console.log(this.props);
+    console.log('this.props in ticker.js',this.props);
 
     return (
       <a data-pin-do="embedPin" data-pin-build="doBuild" href={url}>

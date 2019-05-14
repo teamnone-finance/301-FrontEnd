@@ -6,7 +6,7 @@ const Header = props => {
     <header>
       <h1>Market App</h1>
       <p>This is Team None</p>
-      <Ticker />
+      <Ticker className="ticker" />
     </header>
   );
 };

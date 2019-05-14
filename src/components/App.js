@@ -5,6 +5,8 @@ import superagent from 'superagent';
 import NewPortfolio from './newPortfolio.js';
 import LoginPage from './loginPage.js';
 import ChartandFeed from './chartAndFeed.js';
+import Footer from './footer.js';
+import Main from './main.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -53,7 +55,9 @@ class App extends React.Component {
           {this.state.sample}
           <p>This is happening</p>
           {/* <Portfolio user={this.state.userName} /> */}
-          {/* <ChartandFeed /> */}
+          <Main />
+          <ChartandFeed />
+          <Footer />
         </>
       );
     } else {
@@ -69,6 +73,7 @@ class App extends React.Component {
           />
           <NewPortfolio user={this.state.user.name} />
           {/* <ChartandFeed /> */}
+          <Footer />
         </>
       );
     }

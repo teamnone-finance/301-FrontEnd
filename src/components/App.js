@@ -6,7 +6,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sample: 'blob'
+      user: {
+        loggedIn: false,
+        name: ''
+      }
     };
   }
 
@@ -18,7 +21,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Header />
+        <Header loggedIn={this.state.loggedIn} callback={this.setStateData}/>
         <SearchForm callback={this.setStateData} />
         {this.state.sample}  
       </>

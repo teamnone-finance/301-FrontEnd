@@ -1,4 +1,7 @@
 import React from 'react';
+import Main from './main.js';
+import LoginPage from './loginPage';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class Nav extends React.Component {
   
@@ -8,19 +11,27 @@ export default class Nav extends React.Component {
     let navArr = [];
    
     if (loggedIn){
-      navArr.push(<li key = {1}><a href={'#'}>My Portfolio</a></li>);
+      navArr.push(<li key = {1}><Link to="/"></Link></li>);
     } else{
-      navArr.push(<li key = {1}><a href={'#'}>Log In</a></li>);
+      navArr.push(<li key = {1}><a href={'/login'}>Log In</a></li>);
+
     }
 
-    navArr.push(<li key = {2}><a href={'#'}>Stock History</a></li>);
+    navArr.push(<li key = {2}><a href={'/main'}>Stock History</a></li>);
 
-    navArr.push(<li key = {2}><a href={'#'}>About Us</a></li>);
+    navArr.push(<li key = {3}><a href={'#'}>About Us</a></li>);
 
     return (
       <React.Fragment>
-        <ul id="nav">{navArr}</ul>
+        <Router>
+      <div>
+      <ul id="nav">{navArr}</ul>
+        <Route exact path="/" component={Main} />
+        <Route path="/login" component={LoginPage} />
+        {/* <Route path="/about" component={About} /> */}
+      </div>
+      </Router>
       </React.Fragment>
     );
   }//end of render
-}
+}//end of class

@@ -29,14 +29,14 @@ class Feed extends React.Component {
 
   render() {
     return (
-      <section id='news' className='newsfeed-container'>
+      <section id='generalNews' className='newsfeed-container'>
       <h2>Market News Feed</h2>
     {this.state.newsResults.map((val, idx) => {
       return (
         <div>
              <li key={idx}>
                 <a href={ val.news_url }>{ val.title }</a>
-                <img alt='news' src={val.image_url}/>
+                <img id='generalNewsImg' alt='news' src={val.image_url}/>
                 <p>{ val.text }</p>
                 <p>{ val.source_name }</p>
                 <p>{ val.date }</p>

@@ -6,7 +6,7 @@ import NewPortfolio from './newPortfolio.js';
 import LoginPage from './loginPage.js';
 import ChartandFeed from './chartAndFeed.js';
 import Footer from './footer.js';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Main from './main.js';
 
 
 class App extends React.Component {
@@ -44,7 +44,7 @@ class App extends React.Component {
   };
 
   render() {
-    
+
     if (this.state.user.loggedIn) {
       return (
         <>
@@ -53,6 +53,7 @@ class App extends React.Component {
           {this.state.sample}
           <p>This is happening</p>
           {/* <Portfolio user={this.state.userName} /> */}
+          <Main />
           <ChartandFeed />
           <Footer />
         </>
@@ -63,9 +64,6 @@ class App extends React.Component {
           <Header />
           <SearchForm callback={this.setStateData} />
           {this.state.sample}
-          <p>Need to create user and log in</p>
-          <NewPortfolio />
-          <LoginPage updateState={this.setStateData} />
           <ChartandFeed />
           <Footer/>
         </>

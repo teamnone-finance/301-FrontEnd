@@ -5,6 +5,7 @@ import superagent from 'superagent';
 import NewPortfolio from './newPortfolio.js';
 import LoginPage from './loginPage.js';
 import ChartandFeed from './chartAndFeed.js';
+import AboutUs from './aboutUs.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -62,6 +63,7 @@ class App extends React.Component {
           <NewPortfolio />
           <LoginPage updateState={this.setStateData} />
           <ChartandFeed />
+          <AboutUs />
         </>
       );
     }

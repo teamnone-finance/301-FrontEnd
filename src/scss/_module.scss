@@ -1,4 +1,18 @@
 
+#generalNews {
+  width: 400px;
+  height: 660px;
+  border: 1px solid lightgray;
+  background-color: white;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+#generalNewsImg {
+  width: 200px;
+}
+
+
 li a {
   color: aliceblue;
   background-color: darkblue;

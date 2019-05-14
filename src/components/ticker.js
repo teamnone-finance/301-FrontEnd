@@ -64,14 +64,11 @@ export default class Ticker extends React.Component {
   }
 
   render() {
-    const { url } = this.props
 
     console.log('this.props in ticker.js',this.props);
 
     return (
-      <a data-pin-do="embedPin" data-pin-build="doBuild" href={url}>
-        {url}
-      </a>
+      <a ></a>
     )
   }
 }

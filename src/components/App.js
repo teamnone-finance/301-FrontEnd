@@ -1,6 +1,9 @@
 import React from 'react';
 import Header from './header.js';
 import SearchForm from './search-form.js';
+import superagent from 'superagent';
+import NewPortfolio from './newPortfolio.js';
+import LoginPage from './loginPage.js';
 import ChartandFeed from './chartAndFeed.js';
 
 class App extends React.Component {
@@ -14,21 +17,55 @@ class App extends React.Component {
     };
   }
 
-  setStateData = stateData => {
-    this.setState(stateData)
+  setStateData = (stateKey, stateData) => {
+    this.state.user[stateKey] = stateData;
+    this.setState({ user: this.state.user });
     console.log(this.state);
-}
+  };
+
+  //this is to handle the login page
+  handleLoggedStatus = () => {
+    let dbCheckResponse = superagent
+      .get('https://market-app-backend.herokuapp.com/user')
+      .query({ username: this.state.user.userName });
+    if (dbCheckResponse.rowCount > 0) {
+      this.setState({ loggedIn: true });
+      //load portfolio page
+    } else {
+      //add user to db
+      superagent
+        .post('https://market-app-backend.herokuapp.com/user')
+        .query({ username: this.state.user.userName });
+      //load create portfolio page.
+    }
+  };
 
   render() {
-    return (
-      <>
-        <Header loggedIn={this.state.loggedIn} callback={this.setStateData}/>
-        <SearchForm callback={this.setStateData} />
-        {this.state.sample}  
-        <ChartandFeed/>
-      </>
-    );
+    if (this.state.user.loggedIn) {
+      return (
+        <>
+          <Header loggedIn={this.state.loggedIn} callback={this.setStateData} />
+          <SearchForm callback={this.setStateData} />
+          {this.state.sample}
+          <p>This is happening</p>
+          {/* <Portfolio user={this.state.userName} /> */}
+          <ChartandFeed />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Header />
+          <SearchForm callback={this.setStateData} />
+          {this.state.sample}
+          <p>Need to create user and log in</p>
+          <NewPortfolio />
+          <LoginPage updateState={this.setStateData} />
+          <ChartandFeed />
+        </>
+      );
+    }
   }
-}//end of <App>
+} //end of <App>
 
 export default App;

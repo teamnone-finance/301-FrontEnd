@@ -53,6 +53,7 @@ class Feed extends React.Component {
       <ul id="news">
       {this.state.newsResults.map((val, idx) => {
       return (
+        <>
          <li key={idx}>
             <a href={ val.url }>{ val.title }</a>
             <img id='generalNewsImg' alt='news' src={val.urlToImage}/>
@@ -60,6 +61,8 @@ class Feed extends React.Component {
             <p>{ val.source.name }</p>
             <p>{ val.publishedAt }</p>
         </li>
+        <hr></hr>
+        </>
     );
     })}
       </ul>

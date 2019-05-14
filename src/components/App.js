@@ -5,6 +5,7 @@ import superagent from 'superagent';
 import NewPortfolio from './newPortfolio.js';
 import LoginPage from './loginPage.js';
 import ChartandFeed from './chartAndFeed.js';
+import AboutUs from './aboutUs.js';
 import Footer from './footer.js';
 import Main from './main.js';
 

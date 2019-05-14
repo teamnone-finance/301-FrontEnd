@@ -146,21 +146,17 @@ export default class IndexChart extends React.Component {
         "originalTitle": "Forex"
       }
     ]
-  }
   }`;
   const indexChart = document.getElementById('indexChart');
   indexChart.appendChild(script);
-  console.log(script);
+  console.log('SCRIPT ---- ',script);
 }
 
 
   render() {
-    const { url } = this.props
 
     return (
-      <a data-pin-do="embedPin" data-pin-build="doBuild" href={url}>
-        {url}
-      </a>
+      <a data-pin-do="embedPin" data-pin-build="doBuild" ></a>
     )
   }
 }

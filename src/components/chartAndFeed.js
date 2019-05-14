@@ -8,7 +8,7 @@ const ChartandFeed = props => {
       <div id="indexChart">
         <IndexChart className="indexChart" />
       </div>
-      <div>
+      <div id="feed">
         <Feed />
       </div>
 

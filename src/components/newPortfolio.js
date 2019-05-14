@@ -1,4 +1,5 @@
 import React from 'react';
+import superagent from 'superagent';
 
 class NewPortfolio extends React.Component {
   constructor(props) {
@@ -8,6 +9,12 @@ class NewPortfolio extends React.Component {
 
   handleNewPortfolio = e => {
     e.preventDefault();
+    superagent
+      .post('/portfolio')
+      .query({
+        username: this.props.user,
+        portfolio_name: e.currentTarget[0].value
+      });
     console.log(e.currentTarget[0].value);
   };
 
@@ -16,7 +23,7 @@ class NewPortfolio extends React.Component {
       <>
         <h2>Create a new Portfolio</h2>
         <form onSubmit={this.handleNewPortfolio}>
-          <input />
+          <input placeholder='Portfolio Name' />
           <button>Add</button>
         </form>
       </>

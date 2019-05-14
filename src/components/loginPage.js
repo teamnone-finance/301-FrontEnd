@@ -14,7 +14,8 @@ class LoginPage extends React.Component {
     console.log(e.currentTarget[0].value);
     await this.setState({ searchQuery: e.currentTarget[0].value });
     //method to handle logged in / not logged in - pass in username
-    this.props.updateState('userName', this.state.searchQuery);
+    await this.props.updateState('name', this.state.searchQuery);
+    this.props.handleLogin();
   };
 
   render() {
@@ -22,7 +23,7 @@ class LoginPage extends React.Component {
       <>
         <h2>Please Log In</h2>
         <form onSubmit={this.handleSubmit}>
-          <input />
+          <input placeholder='User Name' />
           <button>Login</button>
         </form>
       </>

@@ -24,18 +24,19 @@ class App extends React.Component {
   };
 
   //this is to handle the login page
-  handleLoggedStatus = () => {
-    let dbCheckResponse = superagent
+  handleLoggedStatus = async () => {
+    let dbCheckResponse = await superagent
       .get('https://market-app-backend.herokuapp.com/user')
-      .query({ username: this.state.user.userName });
+      .query({ username: this.state.user.name });
     if (dbCheckResponse.rowCount > 0) {
-      this.setState({ loggedIn: true });
+      this.setStateData('loggedIn', true);
       //load portfolio page
     } else {
       //add user to db
-      superagent
+      await superagent
         .post('https://market-app-backend.herokuapp.com/user')
-        .query({ username: this.state.user.userName });
+        .query({ username: this.state.user.name });
+      this.setStateData('loggedIn', true);
       //load create portfolio page.
     }
   };
@@ -44,12 +45,15 @@ class App extends React.Component {
     if (this.state.user.loggedIn) {
       return (
         <>
-          <Header loggedIn={this.state.loggedIn} callback={this.setStateData} />
+          <Header
+            loggedIn={this.state.user.loggedIn}
+            callback={this.setStateData}
+          />
           <SearchForm callback={this.setStateData} />
           {this.state.sample}
           <p>This is happening</p>
           {/* <Portfolio user={this.state.userName} /> */}
-          <ChartandFeed />
+          {/* <ChartandFeed /> */}
         </>
       );
     } else {
@@ -59,9 +63,12 @@ class App extends React.Component {
           <SearchForm callback={this.setStateData} />
           {this.state.sample}
           <p>Need to create user and log in</p>
-          <NewPortfolio />
-          <LoginPage updateState={this.setStateData} />
-          <ChartandFeed />
+          <LoginPage
+            handleLogin={this.handleLoggedStatus}
+            updateState={this.setStateData}
+          />
+          <NewPortfolio user={this.state.user.name} />
+          {/* <ChartandFeed /> */}
         </>
       );
     }

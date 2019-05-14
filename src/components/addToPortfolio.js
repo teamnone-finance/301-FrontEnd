@@ -12,7 +12,7 @@ class AddToPortfolio extends React.Component {
     let stockSymbol = e.currentTarget[0].value;
     //send post request to db
     superagent.post('/stocks').query({
-      username: this.props.user.userName,
+      username: this.props.user.name,
       stock: stockSymbol,
       portfolio_id: 1
     });

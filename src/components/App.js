@@ -5,6 +5,9 @@ import superagent from 'superagent';
 import NewPortfolio from './newPortfolio.js';
 import LoginPage from './loginPage.js';
 import ChartandFeed from './chartAndFeed.js';
+import Footer from './footer.js';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -24,8 +27,8 @@ class App extends React.Component {
   };
 
   //this is to handle the login page
-  handleLoggedStatus = () => {
-    let dbCheckResponse = superagent
+  handleLoggedStatus = async () => {
+    let dbCheckResponse = await superagent
       .get('https://market-app-backend.herokuapp.com/user')
       .query({ username: this.state.user.userName });
     if (dbCheckResponse.rowCount > 0) {
@@ -41,6 +44,7 @@ class App extends React.Component {
   };
 
   render() {
+    
     if (this.state.user.loggedIn) {
       return (
         <>
@@ -50,6 +54,7 @@ class App extends React.Component {
           <p>This is happening</p>
           {/* <Portfolio user={this.state.userName} /> */}
           <ChartandFeed />
+          <Footer />
         </>
       );
     } else {
@@ -62,6 +67,7 @@ class App extends React.Component {
           <NewPortfolio />
           <LoginPage updateState={this.setStateData} />
           <ChartandFeed />
+          <Footer/>
         </>
       );
     }

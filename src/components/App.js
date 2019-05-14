@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './header.js';
-import SearchForm from './search-form.js';
+import Company from './companyInfo';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        <SearchForm callback={this.setStateData} />
+        <Company callback={this.setStateData} />
         {this.state.sample}  
       </>
     );

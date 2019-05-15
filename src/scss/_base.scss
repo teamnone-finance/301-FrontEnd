@@ -8,8 +8,9 @@ header{
   text-align: center;
 }
 
-h1{
+h1 a{
   font-size: 3vw;
+  text-decoration: none;
 }
 
 footer{
@@ -17,4 +18,13 @@ footer{
   text-align: center;
   color: aliceblue;
   line-height: 4vw;
+}
+
+h2{
+  font-size: 2vw;
+  text-align: center;
+}
+
+p{
+  text-align: center;
 }

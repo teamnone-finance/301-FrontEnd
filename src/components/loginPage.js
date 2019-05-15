@@ -1,29 +1,25 @@
 import React from 'react';
-import superagent from 'superagent';
 
 class LoginPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchQuery: 'User Name'
-    };
-  }
 
-  handleSubmit = async e => {
+  handleSubmit = e => {
     e.preventDefault();
-    console.log(e.currentTarget[0].value);
-    await this.setState({ searchQuery: e.currentTarget[0].value });
-    //method to handle logged in / not logged in - pass in username
-    this.props.updateState('userName', this.state.searchQuery);
+    let input = document.getElementById('userName');
+    console.log('input.value: ',input.value);
+    this.setState({ searchQuery: input.value });
+    this.props.updateState('name', input.value);
+    this.props.handleLogin();
   };
 
   render() {
     return (
       <>
-        <h2>Please Log In</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input />
-          <button>Login</button>
+        <form id="login-form">
+        <section id="form-section">
+        <h2>Log In or Register</h2>
+          <input id="userName" placeholder='User Name'/>
+          <button onClick={this.handleSubmit}>Login</button>
+        </section>
         </form>
       </>
     );

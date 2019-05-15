@@ -1,12 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Header from './header.js';
 import Company from './companyInfo';
 import SearchForm from './search-form.js';
 import superagent from 'superagent';
-import NewPortfolio from './newPortfolio.js';
-import LoginPage from './loginPage.js';
-import ChartandFeed from './chartAndFeed.js';
-import AboutUs from './aboutUs.js';
 import Footer from './footer.js';
 import Main from './main.js';
 
@@ -24,51 +21,48 @@ class App extends React.Component {
   setStateData = (stateKey, stateData) => {
     this.state.user[stateKey] = stateData;
     this.setState({ user: this.state.user });
-    console.log(this.state);
+    console.log('this.state after setStateData: ',this.state);
   };
 
   //this is to handle the login page
   handleLoggedStatus = async () => {
+    console.log('User entered was: ',this.state.user.name);
     let dbCheckResponse = await superagent
-      .get('https://market-app-backend.herokuapp.com/user')
-      .query({ username: this.state.user.userName });
-    if (dbCheckResponse.rowCount > 0) {
-      this.setState({ loggedIn: true });
+      .get(`${___API_URL____}/user`)
+      .query({ username: this.state.user.name });
+    console.log('query response', dbCheckResponse);
+
+    if (dbCheckResponse.body.rowCount > 0) {
+      console.log(`user in db`);
+      this.setStateData('loggedIn', true);
+      localStorage.setItem('loggedIn', true);
+      window.location.href='/portfolio';//comment this out if you are checking on log in page
       //load portfolio page
     } else {
       //add user to db
+      console.log('new user -- going to add in database');
       superagent
-        .post('https://market-app-backend.herokuapp.com/user')
-        .query({ username: this.state.user.userName });
+        .post(`${___API_URL____}/user`)
+        .send({ name: this.state.user.name });
+        this.setStateData('loggedIn', true);
+
+        window.location.href='/portfolio';//comment this out if you are checking on log in page
       //load create portfolio page.
+        localStorage.setItem('loggedIn', true);
     }
+    console.log('this.state after handleLoggedStat: ',this.state);
   };
 
   render() {
-
-    if (this.state.user.loggedIn) {
-      return (
-        <>
-          <Header loggedIn={this.state.loggedIn} callback={this.setStateData} />
-          <Company callback={this.setStateData} />
-          <p>This is happening</p>
-          {/* <Portfolio user={this.state.userName} /> */}
-          <Main />
-          <ChartandFeed />
-          <Footer />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <Header />
-          <SearchForm callback={this.setStateData} />
-          {this.state.sample}
-          <ChartandFeed />
-          <Footer/>
-        </>
-      );
-    }
+    
+    return (
+      <>
+      <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
+            updateState={this.setStateData}/>
+            {/* <Main/> */}
+      <Footer />
+      </>
+    );
   }
 } //end of <App>
 

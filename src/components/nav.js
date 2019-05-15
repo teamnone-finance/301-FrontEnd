@@ -36,7 +36,8 @@ export default class Nav extends React.Component {
         <Router>
       <div>
       <ul id="nav">{navArr}</ul>
-        <Route path="/main" component={Main} />
+        <Route exact path="/" component={Main} />
+        <Route exact path="/main" component={Main} />
         <Route path="/about" component={AboutUs} />
         <Route path="/portfolio" component={Portfolio} />
         <Route

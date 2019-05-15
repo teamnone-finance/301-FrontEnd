@@ -39,7 +39,7 @@ class App extends React.Component {
       console.log(`user in db`);
       this.setStateData('loggedIn', true);
       localStorage.setItem('loggedIn', true);
-      // window.location.href='/portfolio';//comment this out if you are checking on log in page
+      window.location.href='/portfolio';//comment this out if you are checking on log in page
       //load portfolio page
     } else {
       //add user to db
@@ -49,7 +49,7 @@ class App extends React.Component {
         .send({ name: this.state.user.name });
         this.setStateData('loggedIn', true);
 
-        // window.location.href='/portfolio';//comment this out if you are checking on log in page
+        window.location.href='/portfolio';//comment this out if you are checking on log in page
       //load create portfolio page.
         localStorage.setItem('loggedIn', true);
     }
@@ -57,17 +57,12 @@ class App extends React.Component {
   };
 
   render() {
-    let localLoggedIn = localStorage.getItem('loggedIn');
-    let innerBody = <Main />;
-    if (this.state.user.loggedIn || localLoggedIn) {
-      innerBody = '';
-    }
-
+    
     return (
       <>
       <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
             updateState={this.setStateData}/>
-            
+            {/* <Main/> */}
       <Footer />
       </>
     );

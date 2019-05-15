@@ -61,3 +61,22 @@
     border-radius: 1vw;
   }
 }
+
+#portfolio-h2{
+  padding: 2%;
+}
+
+#portfolio{
+  color: darkblue;
+  & ul{
+    
+    & li{
+
+      & h4{
+        display: inline;
+        font-size: 1.5vw;
+      }
+    }
+
+  }
+}

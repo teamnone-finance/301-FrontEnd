@@ -1,12 +1,6 @@
 import React from 'react';
 
 class LoginPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchQuery: 'User Name'
-    };
-  }
 
   handleSubmit = e => {
     e.preventDefault();

@@ -1,12 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Header from './header.js';
 import Company from './companyInfo';
 import SearchForm from './search-form.js';
 import superagent from 'superagent';
 import Footer from './footer.js';
 import Main from './main.js';
-let ___API_URL____ = 'https://market-app-backend.herokuapp.com';
+import Card from './card.js';
+// let ___API_URL____ = 'https://market-app-backend.herokuapp.com';
+let ___API_URL____ = 'http://localhost:4000';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,12 +24,12 @@ class App extends React.Component {
   setStateData = (stateKey, stateData) => {
     this.state.user[stateKey] = stateData;
     this.setState({ user: this.state.user });
-    console.log('this.state after setStateData: ',this.state);
+    console.log('this.state after setStateData: ', this.state);
   };
 
   //this is to handle the login page
   handleLoggedStatus = async () => {
-    console.log('User entered was: ',this.state.user.name);
+    console.log('User entered was: ', this.state.user.name);
     let dbCheckResponse = await superagent
       .get(`${___API_URL____}/user`)
       .query({ username: this.state.user.name });
@@ -37,7 +39,7 @@ class App extends React.Component {
       console.log(`user in db`);
       this.setStateData('loggedIn', true);
       localStorage.setItem('loggedIn', true);
-      window.location.href='/portfolio';//comment this out if you are checking on log in page
+      window.location.href = '/portfolio'; //comment this out if you are checking on log in page
       //load portfolio page
     } else {
       //add user to db
@@ -45,23 +47,26 @@ class App extends React.Component {
       superagent
         .post(`${___API_URL____}/user`)
         .send({ name: this.state.user.name });
-        this.setStateData('loggedIn', true);
+      this.setStateData('loggedIn', true);
 
-        window.location.href='/portfolio';//comment this out if you are checking on log in page
+      window.location.href = '/portfolio'; //comment this out if you are checking on log in page
       //load create portfolio page.
-        localStorage.setItem('loggedIn', true);
+      localStorage.setItem('loggedIn', true);
     }
-    console.log('this.state after handleLoggedStat: ',this.state);
+    console.log('this.state after handleLoggedStat: ', this.state);
   };
 
   render() {
-    
     return (
       <>
-      <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
-            updateState={this.setStateData}/>
-            {/* <Main/> */}
-      <Footer />
+        <Header
+          loggedIn={this.state.user.loggedIn}
+          handleLogin={this.handleLoggedStatus}
+          updateState={this.setStateData}
+        />
+        {/* <Main/> */}
+        <Card />
+        <Footer />
       </>
     );
   }

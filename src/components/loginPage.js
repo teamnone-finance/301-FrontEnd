@@ -11,19 +11,22 @@ class LoginPage extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    console.log(e.currentTarget[0].value);
-    await this.setState({ searchQuery: e.currentTarget[0].value });
+    // console.log(e.currentTarget[0].value);
+    let input = document.getElementById('userName');
+    console.log(input.textContent);
+    await this.setState({ searchQuery: input.textContent });
     //method to handle logged in / not logged in - pass in username
-    this.props.updateState('userName', this.state.searchQuery);
+    await this.props.updateState('name', this.state.searchQuery);
+    this.props.handleLogin();
   };
 
   render() {
     return (
       <>
-        <h2>Please Log In</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input />
-          <button>Login</button>
+         <h2>Please Log In</h2>
+        <form id="login-form">
+          <input id="userName" placeholder='User Name'/>
+          <button onClick={this.handleSubmit}>Login</button>
         </form>
       </>
     );

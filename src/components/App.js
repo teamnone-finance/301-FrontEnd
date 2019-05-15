@@ -8,6 +8,7 @@ import ChartandFeed from './chartAndFeed.js';
 import AboutUs from './aboutUs.js';
 import Footer from './footer.js';
 import Main from './main.js';
+import Portfolio from './portfolio.js';
 
 
 class App extends React.Component {
@@ -31,15 +32,20 @@ class App extends React.Component {
   handleLoggedStatus = async () => {
     let dbCheckResponse = await superagent
       .get('https://market-app-backend.herokuapp.com/user')
-      .query({ username: this.state.user.userName });
-    if (dbCheckResponse.rowCount > 0) {
-      this.setState({ loggedIn: true });
+      .query({ username: this.state.user.name });
+    console.log('query response', dbCheckResponse);
+
+    if (dbCheckResponse.body.rowCount > 0) {
+      console.log(`user in db`);
+      this.setStateData('loggedIn', true);
       //load portfolio page
     } else {
       //add user to db
-      superagent
+      console.log('new user -- going to add in database');
+      await superagent
         .post('https://market-app-backend.herokuapp.com/user')
-        .query({ username: this.state.user.userName });
+        .query({ username: this.state.user.name });
+      this.setStateData('loggedIn', true);
       //load create portfolio page.
     }
   };
@@ -49,23 +55,19 @@ class App extends React.Component {
     if (this.state.user.loggedIn) {
       return (
         <>
-          <Header loggedIn={this.state.loggedIn} callback={this.setStateData} />
-          <SearchForm callback={this.setStateData} />
-          {this.state.sample}
-          <p>This is happening</p>
+          <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
+            updateState={this.setStateData}/>
           {/* <Portfolio user={this.state.userName} /> */}
-          <Main />
-          <ChartandFeed />
+          <Portfolio />
           <Footer />
         </>
       );
     } else {
       return (
         <>
-          <Header />
-          <SearchForm callback={this.setStateData} />
-          {this.state.sample}
-          <ChartandFeed />
+          <Header handleLogin={this.handleLoggedStatus}
+            updateState={this.setStateData}/>
+          {/* <Main /> */}
           <Footer/>
         </>
       );

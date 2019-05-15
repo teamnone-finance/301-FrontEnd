@@ -67,8 +67,6 @@ export default class Company extends React.Component {
     let data;
     let reports = [];
     if (this.state.chartReport !== null) {
-      console.log(this.state.companyData);
-      console.log(this.state.chartReport);
       time = this.state.chartReport.filter(object => object['close'] > 0).map(object => object['label']);
       data = this.state.chartReport.filter(object => object['close'] > 0).map(object => object['close']);
       chart =  <div style={{ 'width': '800px', 'margin': '50px auto' }}>

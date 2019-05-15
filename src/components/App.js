@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Header from './header.js';
 import SearchForm from './search-form.js';
 import superagent from 'superagent';
@@ -38,6 +39,7 @@ class App extends React.Component {
     if (dbCheckResponse.body.rowCount > 0) {
       console.log(`user in db`);
       this.setStateData('loggedIn', true);
+      window.location.href='/portfolio';
       //load portfolio page
     } else {
       //add user to db

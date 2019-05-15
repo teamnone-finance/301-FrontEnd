@@ -23,8 +23,8 @@ class LoginPage extends React.Component {
   render() {
     return (
       <>
-         <h2>Please Log In</h2>
         <form id="login-form">
+        <h2>Log In or Register</h2>
           <input id="userName" placeholder='User Name'/>
           <button onClick={this.handleSubmit}>Login</button>
         </form>

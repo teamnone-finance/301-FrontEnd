@@ -2,7 +2,6 @@ import React from 'react';
 import Ticker from './ticker.js';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Nav from './nav.js';
-import Main from './main.js';
 
 
 export default class Header extends React.Component {

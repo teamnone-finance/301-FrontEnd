@@ -3,13 +3,8 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Header from './header.js';
 import SearchForm from './search-form.js';
 import superagent from 'superagent';
-import NewPortfolio from './newPortfolio.js';
-import LoginPage from './loginPage.js';
-import ChartandFeed from './chartAndFeed.js';
-import AboutUs from './aboutUs.js';
 import Footer from './footer.js';
 import Main from './main.js';
-import Portfolio from './portfolio.js';
 
 
 class App extends React.Component {
@@ -34,7 +29,7 @@ class App extends React.Component {
     console.log('User entered was: ',this.state.user.name);
     let dbCheckResponse = await superagent
       .get('https://market-app-backend.herokuapp.com/user')
-      .query({ username: this.state.user.name });
+      .query({ name: this.state.user.name });
     console.log('query response', dbCheckResponse);
 
     if (dbCheckResponse.body.rowCount > 0) {
@@ -48,7 +43,7 @@ class App extends React.Component {
       console.log('new user -- going to add in database');
       superagent
         .post('https://market-app-backend.herokuapp.com/user')
-        .query({ username: this.state.user.name });
+        .query({ name: this.state.user.name });
         this.setStateData('loggedIn', true);
         window.location.href='/portfolio';//comment this out if you are checking on log in page
       //load create portfolio page.
@@ -59,24 +54,19 @@ class App extends React.Component {
 
   render() {
     let localLoggedIn = localStorage.getItem('loggedIn');
-
+    let innerBody = <Main />;
     if (this.state.user.loggedIn || localLoggedIn) {
-      return (
-        <>
-          <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
-            updateState={this.setStateData}/>
-          <Footer />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <Header handleLogin={this.handleLoggedStatus}
-            updateState={this.setStateData}/>
-          <Footer/>
-        </>
-      );
+      innerBody = '';
     }
+
+    return (
+      <>
+      <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
+            updateState={this.setStateData}/>
+            
+      <Footer />
+      </>
+    );
   }
 } //end of <App>
 

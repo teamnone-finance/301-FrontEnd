@@ -1,18 +1,18 @@
 import React, { Fragment } from 'react';
 import superagent from 'superagent';
 import Search from './search-form';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 function createChart(label, data) {
   return {
-    labels: label.reverse(),
+    labels: label,
     datasets: [
       {
         label: 'Stock',
         fillColor: 'rgba(220,220,220,0.2)',
         strokeColor: 'rgba(220,220,220,1)',
         pointColor: 'rgba(220,220,220,1)',
-        data: data.map(object => object['1. open']).reverse(),
+        data: data,
       },
     ]
   }
@@ -20,53 +20,76 @@ function createChart(label, data) {
 
 
 const options = {
+  scales: {
+    xAxes: [{
+      gridLines: {
+        display: false
+      }
+    }],
+    yAxes: [{
+      gridLines: {
+        display: false
+      }
+    }]
+  }
+
 }
 
 
 export default class Company extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { company: null };
+    this.state = { chartReport: null, companyData: null, backend: 'http://localhost:3000'};
     this.handleSubmit = async (event) => {
       event.preventDefault();
-      let query = event.target.stock.value.toString();
-      const backend = 'http://localhost:3000/';
-      let dailyReport = await superagent.get(backend+'get-stocks-intraday?symbol='+query);
-      let monthlyReport = await superagent.get(backend+'get-stocks-monthly?symbol='+query);
-      let companyName = await superagent.get(backend+'get-stocks-quote?symbol='+query);
-      let summaryReport = await superagent.get(backend+'get-stocks-summary?symbol='+query);
-      console.log(dailyReport);
-      this.setState({company: {daily:dailyReport.body['Time Series (5min)'], monthly:monthlyReport.body['Monthly Time Series'], name:companyName.body['bestMatches'][0]['2. name'], summary:summaryReport.body['Global Quote']}});
+      let symbol = event.target.stock.value;
+      await this.getCompany(symbol);
+      await this.getRapidReports(symbol, '1d');
+    }
+
+    this.getRapidReports = async (symbol, time) => {
+      let dailyReport = await superagent.get(`${this.state.backend}/get-stocks-chart?symbol=${symbol}&time=${time}`);
+      this.setState({ chartReport: dailyReport.body });
+    }
+
+    this.getCompany = async(symbol) => {
+      let companyReport = await superagent.get(`${this.state.backend}/get-company?symbol=${symbol}`);
+      console.log(companyReport.body);
+      this.setState({companyData: companyReport.body})
     }
   }
 
   render() {
+    let buttons;
     let chart;
+    let summary;
     let time;
     let data;
     let reports = [];
-    if (this.state.company !== null) {
-      time = Object.keys(this.state.company.daily);
-      data = Object.values(this.state.company.daily);
-      chart = <Line data={createChart(time, data)}
-      options={options}/>
-
-      for (let i = 0; i < time.length; i++) {
-        reports.push(<li key={i}>{`${time[i]} - Open: ${data[i]['1. open']}, Closed: ${data[i]['2. high']}`}</li>)
-      }
+    if (this.state.chartReport !== null) {
+      console.log(this.state.companyData);
+      console.log(this.state.chartReport);
+      time = this.state.chartReport.filter(object => object['close'] > 0).map(object => object['label']);
+      data = this.state.chartReport.filter(object => object['close'] > 0).map(object => object['close']);
+      chart =  <div style={{ 'width': '800px', 'margin': '50px auto' }}>
+                  <Line data={createChart(time, data)} options={options} />
+                </div>;
+      buttons = <div style={{'width': '50%', 'margin': '10px auto', 'border': 'solid'}}>
+                  <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '1d')} className="range-toggle">1 day</button>
+                  <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '1m')} className="range-toggle">1 month</button>
+                  <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '3m')} className="range-toggle">3 month</button>
+                  <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '6m')} className="range-toggle">6 month</button>
+                  <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '1y')} className="range-toggle">1 year</button>
+                  <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '5y')} className="range-toggle">5 year</button>
+                </div>;
     }
 
     return (
       <Fragment>
         <Search handleSubmit={this.handleSubmit} />
         <div>
-          <div width="400px" height="250px">
+          {buttons}
           {chart}
-
-          </div>
-          <ul>
-            {reports}
-          </ul>
         </div>
       </Fragment>
     );

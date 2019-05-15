@@ -21,6 +21,7 @@ export default class SearchForm extends React.Component {
     };
 
     return (
+      <>
       <form onSubmit={event => this.props.handleSubmit(event)}>
         <label htmlFor="stock">Enter Stock Symbol</label>
         <input list="symbols" id="stock" name="stock" type="text" autoComplete="on"/>
@@ -29,6 +30,7 @@ export default class SearchForm extends React.Component {
         </datalist>
         <input type="submit" />
       </form>
+      </>
     );
   }
 }

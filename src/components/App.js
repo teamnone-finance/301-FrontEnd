@@ -60,8 +60,6 @@ class App extends React.Component {
       <>
       <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
             updateState={this.setStateData}/>
-            {/* <Main/> */}
-      <Company/>
       <Footer />
       </>
     );

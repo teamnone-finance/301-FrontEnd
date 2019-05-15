@@ -39,7 +39,7 @@ const options = {
 export default class Company extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { chartReport: null, companyData: null, backend: 'http://localhost:3000'};
+    this.state = { chartReport: null, companyData: null, backend: 'https://market-app-backend.herokuapp.com'};
     this.handleSubmit = async (event) => {
       event.preventDefault();
       let symbol = event.target.stock.value;

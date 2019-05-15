@@ -35,3 +35,48 @@
   margin-bottom: 1%;
   padding-right: 5%; 
 }
+
+#form-section{
+  background-color: darkblue;
+  width: 40%;
+  display: inline-block;
+  padding: 5%;
+  border-radius: 2vw;
+
+  & h2{
+    color: aliceblue;
+    padding-bottom: 1vw;
+  }
+
+  & input{
+    font-size: 1.5vw;
+    border-radius: 1vw;
+    padding: .5vw;
+  }
+
+  & button{
+    margin-left: 5%;
+    font-size: 1.5vw;
+    padding: .5vw;
+    border-radius: 1vw;
+  }
+}
+
+#portfolio-h2{
+  padding: 2%;
+}
+
+#portfolio{
+  color: darkblue;
+  & ul{
+    
+    & li{
+
+      & h4{
+        display: inline;
+        font-size: 1.5vw;
+      }
+    }
+
+  }
+}

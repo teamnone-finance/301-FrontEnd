@@ -41,7 +41,7 @@ class App extends React.Component {
       console.log(`user in db`);
       this.setStateData('loggedIn', true);
       localStorage.setItem('loggedIn', true);
-      window.location.href='/portfolio';
+      window.location.href='/portfolio';//comment this out if you are checking on log in page
       //load portfolio page
     } else {
       //add user to db
@@ -50,7 +50,7 @@ class App extends React.Component {
         .post('https://market-app-backend.herokuapp.com/user')
         .query({ username: this.state.user.name });
         this.setStateData('loggedIn', true);
-        window.location.href='/portfolio';
+        window.location.href='/portfolio';//comment this out if you are checking on log in page
       //load create portfolio page.
         localStorage.setItem('loggedIn', true);
     }

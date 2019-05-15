@@ -71,14 +71,8 @@ class App extends React.Component {
             updateState={this.setStateData}
           />
           <SearchForm callback={this.setStateData} />
-          {this.state.sample}
-          <p>Need to create user and log in</p>
-          <LoginPage
-            handleLogin={this.handleLoggedStatus}
-            updateState={this.setStateData}
-          />
-          <NewPortfolio user={this.state.user.name} />
-          {/* <ChartandFeed /> */}
+
+          <ChartandFeed />
           <Footer />
         </>
       );

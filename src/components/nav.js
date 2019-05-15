@@ -42,23 +42,22 @@ export default class Nav extends React.Component {
     return (
       <React.Fragment>
         <Router>
-          <div>
-            <ul id='nav'>{navArr}</ul>
-            <Route exact path='/' component={Main} />
+          <ul id='nav'>{navArr}</ul>
+          <Route exact path='/' component={Main} />
 
-            <Route
-              path='/login'
-              // component={LoginPage}
-              render={props => (
-                <LoginPage
-                  {...props}
-                  updateState={this.props.updateState}
-                  handleLogin={this.props.handleLogin}
-                />
-              )}
-            />
-            {/* <Route path="/about" component={About} /> */}
-          </div>
+          <Route path='/about' component={AboutUs} />
+
+          <Route
+            path='/login'
+            // component={LoginPage}
+            render={props => (
+              <LoginPage
+                {...props}
+                updateState={this.props.updateState}
+                handleLogin={this.props.handleLogin}
+              />
+            )}
+          />
         </Router>
       </React.Fragment>
     );

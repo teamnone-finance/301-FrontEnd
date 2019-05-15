@@ -27,18 +27,15 @@ export default class Company extends React.Component {
   constructor(props) {
     super(props);
     this.state = { company: null };
-
-    this.handleSubmit = (event) => {
+    this.handleSubmit = async (event) => {
       event.preventDefault();
-      const backend = 'http://localhost:3000/get-stocks';
-      return superagent(backend)
-        .query(
-          {
-            symbol: event.target.stock.value
-          })
-        .then(result => {
-          this.setState({ company: result.body['Time Series (5min)'] });
-        });
+      let query = event.target.stock.value.toString();
+      const backend = 'http://localhost:3000/';
+      let dailyReport = await superagent.get(backend+'get-stocks-intraday?symbol='+query);
+      let monthlyReport = await superagent.get(backend+'get-stocks-monthly?symbol='+query);
+      let companyName = await superagent.get(backend+'get-stocks-quote?symbol='+query);
+      let summaryReport = await superagent.get(backend+'get-stocks-summary?symbol='+query);
+      this.setState({company: {daily:dailyReport.body['Time Series (5min)'], monthly:monthlyReport.body['Monthly Time Series'], name:companyName.body['bestMatches'][0]['2. name'], summary:summaryReport.body['Global Quote']}});
     }
   }
 
@@ -48,9 +45,9 @@ export default class Company extends React.Component {
     let data;
     let reports = [];
     if (this.state.company !== null) {
-      console.log('yeah')
-      time = Object.keys(this.state.company);
-      data = Object.values(this.state.company);
+      console.log(this.state.company.summary);
+      time = Object.keys(this.state.company.daily);
+      data = Object.values(this.state.company.daily);
       chart = <Line data={createChart(time, data)}
       options={options}/>
 

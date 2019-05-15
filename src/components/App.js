@@ -7,8 +7,12 @@ import superagent from 'superagent';
 import Footer from './footer.js';
 import Main from './main.js';
 import Card from './card.js';
+<<<<<<< HEAD
 // let ___API_URL____ = 'https://market-app-backend.herokuapp.com';
 let ___API_URL____ = 'http://localhost:4000';
+=======
+let ___API_URL____ = 'https://market-app-backend.herokuapp.com';
+>>>>>>> b303f5dea4ef6d4ce0d8c1facf31e5ee254d1dd5
 
 class App extends React.Component {
   constructor(props) {
@@ -59,6 +63,7 @@ class App extends React.Component {
   render() {
     return (
       <>
+<<<<<<< HEAD
         <Header
           loggedIn={this.state.user.loggedIn}
           handleLogin={this.handleLoggedStatus}
@@ -67,6 +72,14 @@ class App extends React.Component {
         {/* <Main/> */}
         <Card />
         <Footer />
+=======
+      <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
+            updateState={this.setStateData}/>
+            {/* <Main/> */}
+      <Company/>
+      <Card/>
+      <Footer />
+>>>>>>> b303f5dea4ef6d4ce0d8c1facf31e5ee254d1dd5
       </>
     );
   }

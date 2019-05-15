@@ -6,6 +6,7 @@ import SearchForm from './search-form.js';
 import superagent from 'superagent';
 import Footer from './footer.js';
 import Main from './main.js';
+let ___API_URL____ = 'https://market-app-backend.herokuapp.com';
 
 class App extends React.Component {
   constructor(props) {

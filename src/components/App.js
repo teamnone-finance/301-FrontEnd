@@ -6,6 +6,7 @@ import SearchForm from './search-form.js';
 import superagent from 'superagent';
 import Footer from './footer.js';
 import Main from './main.js';
+import Card from './card.js';
 let ___API_URL____ = 'https://market-app-backend.herokuapp.com';
 
 class App extends React.Component {
@@ -60,6 +61,12 @@ class App extends React.Component {
       <>
       <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
             updateState={this.setStateData}/>
+<<<<<<< HEAD
+=======
+            {/* <Main/> */}
+      <Company/>
+      <Card/>
+>>>>>>> b303f5dea4ef6d4ce0d8c1facf31e5ee254d1dd5
       <Footer />
       </>
     );

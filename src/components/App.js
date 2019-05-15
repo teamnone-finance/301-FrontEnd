@@ -1,21 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Header from './header.js';
+import Company from './companyInfo';
 import SearchForm from './search-form.js';
 import superagent from 'superagent';
 import Footer from './footer.js';
 import Main from './main.js';
-
-let ___API_URL____ = `https://market-app-backend.herokuapp.com`;
-// let ___API_URL____ = 'http://localhost:3000';
-
+let ___API_URL____ = 'https://market-app-backend.herokuapp.com';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: {
-        loggedIn: false,
+        loggedIn: true,
         name: ''
       }
     };

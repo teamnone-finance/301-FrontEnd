@@ -4,6 +4,8 @@ import LoginPage from './loginPage';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AboutUs from './aboutUs.js';
 import Portfolio from './portfolio.js';
+import Company from './companyInfo.js';
+import SearchForm from './search-form.js';
 
 export default class Nav extends React.Component {
   
@@ -27,7 +29,7 @@ export default class Nav extends React.Component {
     } else{
       navArr.push(<li key = {2}><a href={'/login'}>Log In</a></li>);
     }
-    navArr.push(<li key = {3}><a href={'#'}>Stock History</a></li>);
+    navArr.push(<li key = {3}><a href={'/search'}>Search</a></li>);
     navArr.push(<li key = {4}><a href={'/about'}>About Us</a></li>);
     
 
@@ -40,6 +42,7 @@ export default class Nav extends React.Component {
         <Route exact path="/main" component={Main} />
         <Route path="/about" component={AboutUs} />
         <Route path="/portfolio" component={Portfolio} />
+        <Route path="/search" component={Company} />
         <Route
             path='/login'
             // component={LoginPage}

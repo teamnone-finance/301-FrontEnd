@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import superagent from 'superagent';
 import Search from './search-form';
 import { Line } from 'react-chartjs-2';
+import SearchForm from './search-form.js';
 
 function createChart(label, data) {
   return {
@@ -83,13 +84,15 @@ export default class Company extends React.Component {
     }
 
     return (
+      <>
       <Fragment>
-        <Search handleSubmit={this.handleSubmit} />
+        <SearchForm handleSubmit={this.handleSubmit} />
         <div>
           {buttons}
           {chart}
         </div>
       </Fragment>
+      </>
     );
   }
 }

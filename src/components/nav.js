@@ -24,7 +24,7 @@ export default class Nav extends React.Component {
 
     return (
       <React.Fragment>
-        <Switch>
+        <Router>
       <div>
       <ul id="nav">{navArr}</ul>
         <Route exact path="/main" component={Main} />
@@ -42,7 +42,7 @@ export default class Nav extends React.Component {
             )}
           />
       </div>
-      </Switch>
+      </Router>
       </React.Fragment>
     );
   }//end of render

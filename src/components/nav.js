@@ -18,6 +18,7 @@ export default class Nav extends React.Component {
     } else{
       navArr.push(<li key = {2}><a href={'/login'}>Log In</a></li>);
     }
+    navArr.push(<li key = {2}><a href={'/portfolio'}>My Portfolio</a></li>);
     navArr.push(<li key = {3}><a href={'#'}>Stock History</a></li>);
     navArr.push(<li key = {4}><a href={'/about'}>About Us</a></li>);
     

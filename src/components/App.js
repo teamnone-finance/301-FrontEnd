@@ -26,11 +26,12 @@ class App extends React.Component {
   setStateData = (stateKey, stateData) => {
     this.state.user[stateKey] = stateData;
     this.setState({ user: this.state.user });
-    console.log(this.state);
+    console.log('this.state after setStateData: ',this.state);
   };
 
   //this is to handle the login page
   handleLoggedStatus = async () => {
+    console.log('User entered was: ',this.state.user.name);
     let dbCheckResponse = await superagent
       .get('https://market-app-backend.herokuapp.com/user')
       .query({ username: this.state.user.name });
@@ -39,17 +40,18 @@ class App extends React.Component {
     if (dbCheckResponse.body.rowCount > 0) {
       console.log(`user in db`);
       this.setStateData('loggedIn', true);
-      window.location.href='/portfolio';
+      // window.location.href='/portfolio';
       //load portfolio page
     } else {
       //add user to db
       console.log('new user -- going to add in database');
-      await superagent
+      superagent
         .post('https://market-app-backend.herokuapp.com/user')
         .query({ username: this.state.user.name });
-      this.setStateData('loggedIn', true);
+        this.setStateData('loggedIn', true);
       //load create portfolio page.
     }
+    console.log('this.state after handleLoggedStat: ',this.state);
   };
 
   render() {

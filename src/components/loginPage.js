@@ -1,5 +1,4 @@
 import React from 'react';
-import superagent from 'superagent';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -9,14 +8,12 @@ class LoginPage extends React.Component {
     };
   }
 
-  handleSubmit = async e => {
+  handleSubmit = e => {
     e.preventDefault();
-    // console.log(e.currentTarget[0].value);
     let input = document.getElementById('userName');
-    console.log(input.textContent);
-    await this.setState({ searchQuery: input.textContent });
-    //method to handle logged in / not logged in - pass in username
-    await this.props.updateState('name', this.state.searchQuery);
+    console.log('input.value: ',input.value);
+    this.setState({ searchQuery: input.value });
+    this.props.updateState('name', input.value);
     this.props.handleLogin();
   };
 

@@ -44,7 +44,7 @@ class Card extends React.Component {
     console.log(`this company info is running`);
     let output = await superagent
       .get('https://market-app-backend.herokuapp.com/get-company')
-      .query({ symbol: 'aapl' })
+      .query({ symbol: this.props.symbol })
       .catch(err => console.log(err));
     console.log(`this is the result of the card query`, output);
     return output;
@@ -53,7 +53,7 @@ class Card extends React.Component {
     console.log(`this card info is running`);
     let output = await superagent
       .get('https://market-app-backend.herokuapp.com/get-quote')
-      .query({ symbol: 'aapl' })
+      .query({ symbol: this.props.symbol })
       .catch(err => console.log(err));
     console.log(`this is the result of the card query`, output.body);
     return output;

@@ -117,7 +117,7 @@
   overflow-y: scroll;
 }
 
-#description h2, p {
+#description h2, #description p {
   margin-bottom: 10px;
   text-align: left;
   width: 80%;
@@ -303,19 +303,21 @@
 
 .list {
   margin: 5px auto;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  background-color: white;
+  width: 99%;
 }
 
 .list li {
   display: inline-block;
-  background-color: white;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   padding: 15px;
   width: 20%;
   font-size: 25px;
+  font-size: 15px;
 }
 
 .list li:nth-child(4) {
-  padding: 13px;
+  padding: 12px;
   padding-top: 15px;
 }
 

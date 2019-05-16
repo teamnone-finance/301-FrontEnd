@@ -92,7 +92,7 @@ export default class Company extends React.Component {
       chart =  <div style={{ 'width': '800px', 'margin': '50px auto' }}>
                   <Line data={createChart(time, data)} options={options} />
                 </div>;
-      buttons = <div style={{'width': '50%', 'margin': '10px auto', 'border': 'solid'}}>
+      buttons = <div style={{'width': '50%', 'margin': '10px auto'}}>
                   <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '1d')} className="range-toggle">1 day</button>
                   <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '1m')} className="range-toggle">1 month</button>
                   <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '3m')} className="range-toggle">3 month</button>

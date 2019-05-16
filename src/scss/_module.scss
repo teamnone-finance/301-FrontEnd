@@ -117,11 +117,11 @@
   margin: 10px 0px;
   font-family: 'Cantarell', sans-serif;
   color: #16191f;
+  font-weight: bold;
 }
 
 .p {
   line-height: 20px;
-  font-style: italic;
   height: 115px;
   overflow: scroll;
   margin-bottom: 10px;
@@ -144,7 +144,7 @@
 }
 
 .aboutb :hover {
-  background: rgba(5, 23, 223, 0.9);
+  background: rgba(93, 100, 176, 0.9);
   transition: all 350ms;
 }
 

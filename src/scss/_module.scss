@@ -1,11 +1,14 @@
+// @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Rock+Salt');
 
 #generalNews {
   width: 600px;
   height: 720px;
-  border: 1px solid lightgray;
+  // border: 1px solid lightgray;
   background-color: white;
   overflow: auto;
   word-wrap: break-word;
+  box-shadow: inset 0px 0px 0px 1px lightgrey;
 }
 
 #generalNewsImg {
@@ -152,4 +155,56 @@
   text-decoration: none;
   color: #fff;
   font-family: 'Cantarell', sans-serif;
+}
+
+#title {
+  // font-family: 'Permanent Marker', cursive;
+  font-family: 'Rock Salt', cursive;
+  padding-bottom: 2%;
+  padding-top: 1%;
+}
+
+#news {
+
+  & li{
+    padding: 2%;
+    display: block;
+    
+    & a{
+      text-decoration: none;
+      color: darkblue;
+      font-weight: bold;
+    }
+    & p{
+      margin-top: 2%;
+    }
+  }
+
+  #newsDiv{
+    overflow: auto;
+    display: flex;
+
+    & img{
+      float: left;
+      padding: 5px;
+      margin-right: 2%;
+      align-self: flex-start;
+      border-radius: 10%;
+    }
+
+    & p{
+      color: darkblue;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-self: center;
+    }
+  }
+
+    #newsFeedTitle {
+      margin-top: 2%;
+      font-weight: bolder;
+      font-size: 2.5vw;
+      color: darkblue;
+    }
 }

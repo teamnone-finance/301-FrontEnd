@@ -64,7 +64,7 @@
 }
 
 #portfolio {
-  color: darkblue;
+  // color: darkblue;
   & ul {
     & li {
       & h4 {
@@ -75,14 +75,37 @@
   }
 }
 
+#name {
+  grid-area: symb;
+  // line-height: 75px;
+}
+#price {
+  grid-area: price;
+  // line-height: 100px;
+}
+#description {
+  margin-top: 5px;
+  grid-area: info;
+}
+#stats {
+  grid-area: list;
+}
+.chartStock {
+  grid-area: chart;
+}
+
 .card {
-  width: 40%;
-  display: flex;
-  flex-flow: row wrap;
-  canvas {
-    width: 40%;
-    float: left;
-  }
+  margin: 5px;
+  float: left;
+  display: grid;
+  grid-template-areas:
+    'symb symb price price list list'
+    'chart chart chart chart list list'
+    'chart chart chart chart info info'
+    'chart chart chart chart info info';
+  background-color: tan;
+  border: thin black solid;
+  width: 47vw;
 }
 
 #button-add-to-portfolio {

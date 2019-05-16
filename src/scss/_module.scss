@@ -80,3 +80,19 @@
 
   }
 }
+
+#button-add-to-portfolio{
+  padding: 1%;
+  border-radius: 2px;
+  font-size: 1.5vw;
+
+  &:hover {
+    background: aliceblue;
+    color: black;
+  }
+}
+
+#search-form{
+  background-color:aliceblue;
+  padding: 2%;
+}

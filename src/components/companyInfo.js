@@ -108,12 +108,14 @@ export default class Company extends React.Component {
     
     return (
       <Fragment>
+        <div id="main">
         <SearchForm handleSubmit={this.handleSubmit} />
         <div>
           {buttons}
           {chart}
         </div>
         <div id="add-to-portfolio">{addToPortfolio}</div>
+        </div>
       </Fragment>
     );
   }

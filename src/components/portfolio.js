@@ -3,8 +3,8 @@ import Card from './card.js';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import superagent from 'superagent';
 
-const ___API_URL____ = 'http://localhost:3000';
-// const ___API_URL____ = 'https://market-app-backend.herokuapp.com';
+// const ___API_URL____ = 'http://localhost:3000';
+const ___API_URL____ = 'https://market-app-backend.herokuapp.com';
 
 export default class Portfolio extends React.Component{
   constructor(props) {

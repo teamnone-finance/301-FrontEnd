@@ -14,13 +14,16 @@ class LoginPage extends React.Component {
   render() {
     return (
       <>
-        <form id="login-form">
+      <div id="main">
+      <form id="login-form">
         <section id="form-section">
         <h2>Log In or Register</h2>
           <input id="userName" placeholder='User Name'/>
           <button onClick={this.handleSubmit}>Login</button>
         </section>
         </form>
+      </div>
+      
       </>
     );
   }

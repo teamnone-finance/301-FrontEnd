@@ -14,10 +14,11 @@ export default class Header extends React.Component {
       <h1 id="title"><a href={'/main'}>Market App</a></h1>
       <p>This is Team None</p>
       <div id="ticker">
-        {/* <Ticker className="ticker" /> */}
+        <Ticker className="ticker" />
       </div>
       <div>
         <Nav  
+          parentState={this.props.parentState}
           handleLogin={this.props.handleLogin}
           updateState={this.props.updateState}
           loggedIn={this.props.loggedIn}/>

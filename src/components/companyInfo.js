@@ -82,6 +82,13 @@ export default class Company extends React.Component {
                 </div>;
     }
 
+    let localLoggedIn = localStorage.getItem('loggedIn');
+    let buttonDiv = document.getElementById('add-to-portfolio');
+    let addToPortfolio;
+    if (localLoggedIn){
+        addToPortfolio = <button>Add to Portfolio</button>
+    }
+
     return (
       <Fragment>
         <SearchForm handleSubmit={this.handleSubmit} />
@@ -89,6 +96,7 @@ export default class Company extends React.Component {
           {buttons}
           {chart}
         </div>
+        <div id="add-to-portfolio">{addToPortfolio}</div>
       </Fragment>
     );
   }

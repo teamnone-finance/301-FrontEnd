@@ -45,6 +45,7 @@ export default class Company extends React.Component {
       let symbol = event.target.stock.value;
       await this.getCompany(symbol);
       await this.getRapidReports(symbol, '1d');
+      
     }
 
     this.getRapidReports = async (symbol, time) => {
@@ -65,6 +66,8 @@ export default class Company extends React.Component {
     let summary;
     let time;
     let data;
+    let localLoggedIn = localStorage.getItem('loggedIn');
+    let addToPortfolio;
     let reports = [];
     if (this.state.chartReport !== null) {
       time = this.state.chartReport.filter(object => object['close'] > 0).map(object => object['label']);
@@ -80,15 +83,13 @@ export default class Company extends React.Component {
                   <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '1y')} className="range-toggle">1 year</button>
                   <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '5y')} className="range-toggle">5 year</button>
                 </div>;
+        if (localLoggedIn){
+            addToPortfolio = <button>Add to Portfolio</button>
+          // buttonDiv.appendChild(addToPortfolio);
+        }
     }
 
-    let localLoggedIn = localStorage.getItem('loggedIn');
-    let buttonDiv = document.getElementById('add-to-portfolio');
-    let addToPortfolio;
-    if (localLoggedIn){
-        addToPortfolio = <button>Add to Portfolio</button>
-    }
-
+    
     return (
       <Fragment>
         <SearchForm handleSubmit={this.handleSubmit} />

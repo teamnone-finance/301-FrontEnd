@@ -67,49 +67,93 @@
   padding: 2%;
 }
 
-#portfolio {
-  // color: darkblue;
-  & ul {
-    & li {
-      & h4 {
-        display: inline;
-        font-size: 1.5vw;
-      }
-    }
-  }
-}
+// #portfolio {
+//   // color: darkblue;
+//   & ul {
+//     & li {
+//       & h4 {
+//         display: inline;
+//         font-size: 1.5vw;
+//       }
+//     }
+//   }
+// }
 
-#name {
-  grid-area: symb;
-  // line-height: 75px;
-}
-#price {
-  grid-area: price;
-  // line-height: 100px;
-}
-#description {
-  margin-top: 5px;
-  grid-area: info;
-}
-#stats {
-  grid-area: list;
-}
-.chartStock {
-  grid-area: chart;
-}
+// #name {
+//   grid-area: symb;
+//   // line-height: 75px;
+// }
+// #price {
+//   grid-area: price;
+//   // line-height: 100px;
+// }
+// #description {
+//   margin-top: 5px;
+//   grid-area: info;
+// }
+// #stats {
+//   grid-area: list;
+//   float:right;
+// }
+// .chartStock {
+//   grid-area: chart;
+// }
 
 .card {
-  margin: 5px;
-  float: left;
-  display: grid;
-  grid-template-areas:
-    'symb symb price price list list'
-    'chart chart chart chart list list'
-    'chart chart chart chart info info'
-    'chart chart chart chart info info';
-  background-color: tan;
-  border: thin black solid;
-  width: 47vw;
+  width: 88%;
+  margin: 10px auto;
+  background-color: white;
+}
+
+#stats {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 50px;
+  margin-top: 50px;
+}
+
+#description {
+  margin-bottom: 25px;
+  overflow-y: scroll;
+}
+
+#description h2, p {
+  margin-bottom: 10px;
+  text-align: left;
+  width: 80%;
+}
+
+#description p {
+  font-size: 15px;
+}
+
+#data {
+  text-align: left;
+  font-size: 20px;
+}
+
+.button-align {
+  margin-left: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+// .card {
+//   margin: 5px;
+//   float: left;
+//   display: grid;
+//   grid-template-areas:
+//     'symb symb price price list list'
+//     'chart chart chart chart list list'
+//     'chart chart chart chart info info'
+//     'chart chart chart chart info info';
+//   background-color: tan;
+//   border: thin black solid;
+//   width: 47vw;
+// }
+
+#chart {
+  width: 750px;
 }
 
 #button-add-to-portfolio {
@@ -274,3 +318,4 @@
   padding: 13px;
   padding-top: 15px;
 }
+

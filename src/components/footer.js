@@ -6,7 +6,7 @@ export default class Footer extends React.Component {
 
   return (
     <footer>
-     <p>React of Wall Street &copy; 2019</p>
+     <p>The React of Wall Street &copy; 2019</p>
     </footer>
   );
   }

@@ -20,9 +20,6 @@ class Card extends React.Component {
     };
   }
 
-  // response.body[key]
-  //get the data and set state ?  --> change this to input what is passed in props
-
   updateCardState = async (info, descr) => {
     console.log(info, descr);
     this.setState({
@@ -68,7 +65,6 @@ class Card extends React.Component {
   render() {
     return (
       <section className='card'>
-      <Chart symbol={this.props.symbol}/>
         <div id='name'>
           <h2>{this.state.symbol}</h2>
           <h4>{this.state.company}</h4>
@@ -76,7 +72,9 @@ class Card extends React.Component {
         <div id='price'>
           <h2>{this.state.nowPrice}</h2>
         </div>
+        <Chart symbol={this.props.symbol} />
         <div id='description'>
+          Company Info
           <p>{this.state.description}</p>
         </div>
         <div id='stats'>
@@ -90,7 +88,6 @@ class Card extends React.Component {
             <li>Latest Volume: {this.state.volumeToday}</li>
           </ul>
         </div>
-        {/* <Line/> react chartJS component ? or canvas for a chartJS chart */}
       </section>
     );
   }

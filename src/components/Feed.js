@@ -13,7 +13,6 @@ class Feed extends React.Component {
   setNews = async event => {
     let today = Date.now();
       let newsData = await superagent.get(`https://newsapi.org/v2/everything?q=stocks+finance&from=2019-05-15&to=${today}&sortBy=publishedAt&apiKey=${process.env.REACT_APP_GN_API_KEY}`);  
-
       this.setState({newsResults: newsData.body.articles});
       console.log(this.state.newsResults);
       let newsArr = [];

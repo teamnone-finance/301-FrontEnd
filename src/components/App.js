@@ -8,6 +8,7 @@ import Footer from './footer.js';
 import Chart from './chart.js';
 import Main from './main.js';
 import Card from './card.js';
+
 // let ___API_URL____ = 'https://market-app-backend.herokuapp.com';
 let ___API_URL____ = 'http://localhost:3000';
 

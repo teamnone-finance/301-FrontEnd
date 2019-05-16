@@ -87,12 +87,14 @@ export default class Portfolio extends React.Component{
 
     return(
       <React.Fragment>
+        <div id="main">
         <h2 id="portfolio-h2">My Portfolio</h2>
         <section id="portfolio">
           <ul>
           {portfolio}
           </ul>
         </section>
+        </div>
 
       </React.Fragment>
     );

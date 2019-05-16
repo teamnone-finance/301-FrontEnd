@@ -23,11 +23,13 @@ export default class Nav extends React.Component {
     console.log('Props: ',this.props);
     let localLoggedIn = localStorage.getItem('loggedIn');
     let navArr = [];
-   
+
+    
     navArr.push(<li key = {1}><a href={'/main'}>Home</a></li>);
     if (loggedIn || localLoggedIn){
       navArr.push(<li key = {2}><a href={'/portfolio'}>My Portfolio</a></li>);
       navArr.push(<li id='logout' key = {5}><a href='/' onClick={this.logout}>Log Out</a></li>);
+      navArr.push(<li id='logout' key = {0}><a href='#' >Welcome Back, {localStorage.getItem('username')}!</a></li>);
     } else{
       navArr.push(<li key = {2}><a href={'/login'}>Log In</a></li>);
     }

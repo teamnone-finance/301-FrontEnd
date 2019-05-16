@@ -15,7 +15,7 @@
   width: 200px;
 }
 
-#nav li a {
+#nav li a{
   color: aliceblue;
   text-decoration: none;
   font-size: 1.5vw;
@@ -100,7 +100,7 @@
 // }
 
 .card {
-  width: 88%;
+  width: 100%;
   margin: 10px auto;
   background-color: white;
 }
@@ -117,7 +117,7 @@
   overflow-y: scroll;
 }
 
-#description h2, p {
+#description h2, #description p {
   margin-bottom: 10px;
   text-align: left;
   width: 80%;
@@ -303,15 +303,16 @@
 
 .list {
   margin: 5px auto;
+  background-color: white;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 .list li {
   display: inline-block;
-  background-color: white;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   padding: 15px;
   width: 20%;
   font-size: 25px;
+  font-size: 15px;
 }
 
 .list li:nth-child(4) {

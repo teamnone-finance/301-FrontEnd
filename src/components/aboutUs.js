@@ -49,10 +49,9 @@ export default class AboutUs extends React.Component {
       <section>
         <img src={Vinh} alt="Vinh Image" title="Vinh image" className="members" />
         <h2 className='name'>Vinh Nguyen</h2>
-        <p className='p'>Vinh Nguyen has a background in Mechanical, Nuclear, and
-							Electrical Engineering alongside Software Development. After completing his studies at the University of
-							Washington, he decided to pursue Software Development to complement his existing skills and knowledge and
-							is now a proud Amazonian.</p>
+        <p className='p'>I have a background in Mechanical, Nuclear, and
+							Electrical Engineering alongside Software Development. After completing my studies at the University of
+							Washington, I decided to pursue Software Development to complement my existing skills and knowledge.</p>
         <button className='aboutb'><a href="https://www.linkedin.com/in/vinh-h-nguyen/" target="_blank">LinkedIn</a></button>
         <button className='aboutb'><a href="https://github.com/nguyenvinh2" target="_blank">GitHub</a></button>
 

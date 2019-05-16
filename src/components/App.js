@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Header from './header.js';
 import Company from './companyInfo';
 import SearchForm from './search-form.js';
@@ -26,12 +26,12 @@ class App extends React.Component {
   setStateData = (stateKey, stateData) => {
     this.state.user[stateKey] = stateData;
     this.setState({ user: this.state.user });
-    console.log('this.state after setStateData: ',this.state);
+    console.log('this.state after setStateData: ', this.state);
   };
 
   //this is to handle the login page
   handleLoggedStatus = async () => {
-    console.log('User entered was: ',this.state.user.name);
+    console.log('User entered was: ', this.state.user.name);
     let dbCheckResponse = await superagent
       .get(`${___API_URL____}/user`)
       .query({ username: this.state.user.name });
@@ -42,7 +42,7 @@ class App extends React.Component {
       this.setStateData('loggedIn', true);
       localStorage.setItem('loggedIn', true);
       localStorage.setItem('username', this.state.user.name);
-      window.location.href='/portfolio';//comment this out if you are checking on log in page
+      window.location.href = '/portfolio'; //comment this out if you are checking on log in page
       //load portfolio page
     } else {
       //add user to db
@@ -50,24 +50,27 @@ class App extends React.Component {
       let result = await superagent
         .post(`${___API_URL____}/user`)
         .query({ username: this.state.user.name });
-        console.log('RESULT FROM USER POST: ',result);
-        this.setStateData('loggedIn', true);
+      console.log('RESULT FROM USER POST: ', result);
+      this.setStateData('loggedIn', true);
 
-        window.location.href='/portfolio';//comment this out if you are checking on log in page
-        localStorage.setItem('loggedIn', true);
-        localStorage.setItem('username', this.state.user.name);
+      window.location.href = '/portfolio'; //comment this out if you are checking on log in page
+      localStorage.setItem('loggedIn', true);
+      localStorage.setItem('username', this.state.user.name);
     }
-    console.log('this.state after handleLoggedStat: ',this.state);
+    console.log('this.state after handleLoggedStat: ', this.state);
   };
 
   render() {
-    
     return (
       <>
-      <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
-            updateState={this.setStateData} parentState={this.state}/>
-            
-      <Footer />
+        <Header
+          loggedIn={this.state.user.loggedIn}
+          handleLogin={this.handleLoggedStatus}
+          updateState={this.setStateData}
+          parentState={this.state}
+        />
+
+        <Footer />
       </>
     );
   }

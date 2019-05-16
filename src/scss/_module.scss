@@ -1,4 +1,4 @@
-// @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Rock+Salt');
 
 #generalNews {
@@ -15,7 +15,6 @@
   width: 200px;
 }
 
-
 #nav li a {
   color: aliceblue;
   text-decoration: none;
@@ -29,77 +28,119 @@
     background: aliceblue;
     color: black;
   }
-  
 }
 
-#nav li{
+#nav li {
   display: inline-block;
   margin-top: 1%;
   margin-bottom: 1%;
-  padding-right: 5%; 
+  padding-right: 5%;
 }
 
-#form-section{
+#form-section {
   background-color: darkblue;
   width: 40%;
   display: inline-block;
   padding: 5%;
   border-radius: 2vw;
 
-  & h2{
+  & h2 {
     color: aliceblue;
     padding-bottom: 1vw;
   }
 
-  & input{
+  & input {
     font-size: 1.5vw;
     border-radius: 1vw;
-    padding: .5vw;
+    padding: 0.5vw;
   }
 
-  & button{
+  & button {
     margin-left: 5%;
     font-size: 1.5vw;
-    padding: .5vw;
+    padding: 0.5vw;
     border-radius: 1vw;
   }
 }
 
-#portfolio-h2{
+#portfolio-h2 {
   padding: 2%;
 }
 
-#portfolio{
-  color: darkblue;
-  & ul{
-    
-    & li{
-
-      & h4{
+#portfolio {
+  // color: darkblue;
+  & ul {
+    & li {
+      & h4 {
         display: inline;
         font-size: 1.5vw;
       }
     }
-
   }
 }
 
-#button-add-to-portfolio{
+#name {
+  grid-area: symb;
+  // line-height: 75px;
+}
+#price {
+  grid-area: price;
+  // line-height: 100px;
+}
+#description {
+  margin-top: 5px;
+  grid-area: info;
+}
+#stats {
+  grid-area: list;
+}
+.chartStock {
+  grid-area: chart;
+}
+
+.card {
+  margin: 5px;
+  float: left;
+  display: grid;
+  grid-template-areas:
+    'symb symb price price list list'
+    'chart chart chart chart list list'
+    'chart chart chart chart info info'
+    'chart chart chart chart info info';
+  background-color: tan;
+  border: thin black solid;
+  width: 47vw;
+}
+
+#button-add-to-portfolio {
   padding: 1%;
   border-radius: 20px;
   font-size: 1.5vw;
   margin-bottom: 2%;
-  background-color:lightblue;
+  background-color:darkblue;
+  color: aliceblue;
 
   &:hover {
-    background: darkblue;
-    color:aliceblue;
+    background: aliceblue;
+    color:darkblue;
   }
 }
 
-#search-form{
-  background-color:aliceblue;
-  padding: 2%;
+#input-search{
+  margin-right: 2%;
+  font-size: 1.2vw;
+}
+
+#input-search-submit{
+  font-size:1vw;
+  padding: .5vw 1.5vw .5vw 1.5vw;
+  border-radius: 10%;
+  background-color: darkblue;
+  color: aliceblue;
+}
+
+#label-search{
+  padding-right: 2%;
 }
 
 .persons {

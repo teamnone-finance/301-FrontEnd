@@ -3,6 +3,7 @@ import superagent from 'superagent';
 import Search from './search-form';
 import { Line } from 'react-chartjs-2';
 import SearchForm from './search-form.js';
+import Card from './card.js';
 
 function createChart(label, data) {
   return {
@@ -35,28 +36,38 @@ const options = {
 
 }
 
-
-export default class Company extends React.Component {
+export default class Chart extends React.Component {
   constructor(props) {
     super(props);
     this.state = { chartReport: null, companyData: null, backend: 'https://market-app-backend.herokuapp.com'};
-    this.handleSubmit = async (event) => {
-      event.preventDefault();
-      let symbol = event.target.stock.value;
-      await this.getCompany(symbol);
-      await this.getRapidReports(symbol, '1d');
+  }
+    
+    load = () => {
+      let symbol = this.props.symbol;
+      // let symbol = 'AAPL';
+      this.getCompany(symbol);
+      this.getRapidReports(symbol, '1d');
     }
 
-    this.getRapidReports = async (symbol, time) => {
-      let dailyReport = await superagent.get(`${this.state.backend}/get-stocks-chart?symbol=${symbol}&time=${time}`);
+    getRapidReports = async (symbol, time) => {
+      let dailyReport = await superagent
+      .get(`${this.state.backend}/get-stocks-chart?symbol=${symbol}&time=${time}`)
+      .catch(err => console.log(err));
+      console.log('DAILY REPORT: RAPID REPORTS: ',dailyReport);
       this.setState({ chartReport: dailyReport.body });
     }
 
-    this.getCompany = async(symbol) => {
-      let companyReport = await superagent.get(`${this.state.backend}/get-company?symbol=${symbol}`);
+    getCompany = async(symbol) => {
+      let companyReport = await superagent
+      .get(`${this.state.backend}/get-company?symbol=${symbol}`)
+      .catch(err => console.log(err));
       console.log(companyReport.body);
       this.setState({companyData: companyReport.body})
     }
+  
+
+  componentDidMount() {
+    this.load();
   }
 
   render() {
@@ -67,6 +78,7 @@ export default class Company extends React.Component {
     let data;
     let reports = [];
     if (this.state.chartReport !== null) {
+      console.log(this.state.chartReport);
       time = this.state.chartReport.filter(object => object['close'] > 0).map(object => object['label']);
       data = this.state.chartReport.filter(object => object['close'] > 0).map(object => object['close']);
       chart =  <div style={{ 'width': '800px', 'margin': '50px auto' }}>
@@ -84,7 +96,6 @@ export default class Company extends React.Component {
 
     return (
       <Fragment>
-        <SearchForm handleSubmit={this.handleSubmit} />
         <div>
           {buttons}
           {chart}

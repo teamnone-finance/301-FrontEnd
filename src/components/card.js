@@ -1,5 +1,6 @@
 import React from 'react';
 import superagent from 'superagent';
+import Chart from './chart.js';
 
 class Card extends React.Component {
   constructor(props) {
@@ -67,6 +68,7 @@ class Card extends React.Component {
   render() {
     return (
       <section className='card'>
+      <Chart symbol={this.props.symbol}/>
         <div id='name'>
           <h2>{this.state.symbol}</h2>
           <h4>{this.state.company}</h4>

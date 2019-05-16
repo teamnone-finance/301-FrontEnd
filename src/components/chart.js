@@ -5,19 +5,18 @@ import { Line } from 'react-chartjs-2';
 import SearchForm from './search-form.js';
 import Card from './card.js';
 
-function createChart(label, data, symbol) {
+function createChart(label, data) {
   return {
     labels: label,
     datasets: [
       {
-        label: symbol,
-        backgroundColor: 'rgba(255,200,255,1)',
-        fillColor: 'rgba(255,255,255,255.2)',
-        strokeColor: 'rgba(255,255,255,1)',
-        // pointColor: 'rgba(220,220,220,1)',
-        data: data,
+        label: 'Stock',
+        fillColor: 'rgba(220,220,220,0.2)',
+        strokeColor: 'rgba(220,220,220,1)',
+        pointColor: 'rgba(220,220,220,1)',
+        data: data
       }
-    ],
+    ]
   };
 }
 
@@ -87,9 +86,11 @@ export default class Chart extends React.Component {
   render() {
     let buttons;
     let chart;
+    let summary;
     let time;
     let data;
-    if (this.state.chartReport !== null && this.state.companyData !==null) {
+    let reports = [];
+    if (this.state.chartReport !== null) {
       console.log(this.state.chartReport);
       time = this.state.chartReport
         .filter(object => object['close'] > 0)
@@ -99,12 +100,12 @@ export default class Chart extends React.Component {
         .map(object => object['close']);
       chart = (
         <div id='stockChart' style={{ width: '100%', margin: '50px auto' }}>
-          <Line data={createChart(time, data, this.state.companyData['symbol'])} options={options} />
+          <Line data={createChart(time, data)} options={options} />
         </div>
       );
       buttons = (
-        <div className="button-align" style={{ width: '100%', margin: '10px auto'}}>
-          <button className="button-align"
+        <div style={{ width: '50%', margin: '10px auto', border: 'solid' }}>
+          <button
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '1d')
             }
@@ -112,7 +113,7 @@ export default class Chart extends React.Component {
           >
             1 day
           </button>
-          <button className="button-align"
+          <button
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '1m')
             }
@@ -120,7 +121,7 @@ export default class Chart extends React.Component {
           >
             1 month
           </button>
-          <button className="button-align"
+          <button
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '3m')
             }
@@ -128,7 +129,7 @@ export default class Chart extends React.Component {
           >
             3 month
           </button>
-          <button className="button-align"
+          <button
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '6m')
             }
@@ -136,7 +137,7 @@ export default class Chart extends React.Component {
           >
             6 month
           </button>
-          <button className="button-align"
+          <button
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '1y')
             }
@@ -144,7 +145,7 @@ export default class Chart extends React.Component {
           >
             1 year
           </button>
-          <button className="button-align"
+          <button
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '5y')
             }

@@ -41,7 +41,7 @@ class App extends React.Component {
       this.setStateData('loggedIn', true);
       localStorage.setItem('loggedIn', true);
       localStorage.setItem('username', this.state.user.name);
-      // window.location.href='/portfolio';//comment this out if you are checking on log in page
+      window.location.href='/portfolio';//comment this out if you are checking on log in page
       //load portfolio page
     } else {
       //add user to db
@@ -52,7 +52,7 @@ class App extends React.Component {
         console.log('RESULT FROM USER POST: ',result);
         this.setStateData('loggedIn', true);
 
-        // window.location.href='/portfolio';//comment this out if you are checking on log in page
+        window.location.href='/portfolio';//comment this out if you are checking on log in page
         localStorage.setItem('loggedIn', true);
         localStorage.setItem('username', this.state.user.name);
     }

@@ -11,7 +11,7 @@ export default class Header extends React.Component {
   return (
     <header>
       <Router>
-      <h1 id="title"><a href={'/main'}>React of Wall Street</a></h1>
+      <h1 id="title"><a href={'/main'}>The React of Wall Street</a></h1>
       <div id="ticker">
         <Ticker className="ticker" />
       </div>

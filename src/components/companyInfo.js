@@ -39,13 +39,15 @@ const options = {
 export default class Company extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { chartReport: null, companyData: null, backend: 'https://market-app-backend.herokuapp.com'};
+    this.state = { chartReport: null, companyData: null, 
+      // backend: 'https://market-app-backend.herokuapp.com'};
+      backend: 'http://localhost:3000'};
+
     this.handleSubmit = async (event) => {
       event.preventDefault();
       let symbol = event.target.stock.value;
       await this.getCompany(symbol);
       await this.getRapidReports(symbol, '1d');
-      
     }
 
     this.getRapidReports = async (symbol, time) => {
@@ -55,6 +57,14 @@ export default class Company extends React.Component {
 
     this.getCompany = async(symbol) => {
       let companyReport = await superagent.get(`${this.state.backend}/get-company?symbol=${symbol}`);
+      console.log(companyReport.body);
+      this.setState({companyData: companyReport.body})
+    }
+
+    this.addToUserPortfolio = async(symbol) => {
+      let companyReport = await superagent
+      .post(`${this.state.backend}/stocks`)
+      .send({ symbol: symbol});
       console.log(companyReport.body);
       this.setState({companyData: companyReport.body})
     }
@@ -84,7 +94,7 @@ export default class Company extends React.Component {
                   <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '5y')} className="range-toggle">5 year</button>
                 </div>;
         if (localLoggedIn){
-            addToPortfolio = <button>Add to Portfolio</button>
+            addToPortfolio = <button id="button-add-to-portfolio" >Add to Portfolio</button>
           // buttonDiv.appendChild(addToPortfolio);
         }
     }

@@ -8,7 +8,8 @@ import Footer from './footer.js';
 import Chart from './chart.js';
 import Main from './main.js';
 import Card from './card.js';
-let ___API_URL____ = 'https://market-app-backend.herokuapp.com';
+// let ___API_URL____ = 'https://market-app-backend.herokuapp.com';
+let ___API_URL____ = 'http://localhost:3000';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,24 +34,24 @@ class App extends React.Component {
     let dbCheckResponse = await superagent
       .get(`${___API_URL____}/user`)
       .query({ username: this.state.user.name });
-    console.log('query response', dbCheckResponse);
+    console.log('query response', dbCheckResponse.body);
 
     if (dbCheckResponse.body.rowCount > 0) {
       console.log(`user in db`);
       this.setStateData('loggedIn', true);
       localStorage.setItem('loggedIn', true);
-      window.location.href='/portfolio';//comment this out if you are checking on log in page
+      // window.location.href='/portfolio';//comment this out if you are checking on log in page
       //load portfolio page
     } else {
       //add user to db
       console.log('new user -- going to add in database');
-      superagent
+      let result = await superagent
         .post(`${___API_URL____}/user`)
-        .send({ name: this.state.user.name });
+        .query({ username: this.state.user.name });
+        console.log('RESULT FROM USER POST: ',result);
         this.setStateData('loggedIn', true);
 
-        window.location.href='/portfolio';//comment this out if you are checking on log in page
-      //load create portfolio page.
+        // window.location.href='/portfolio';//comment this out if you are checking on log in page
         localStorage.setItem('loggedIn', true);
     }
     console.log('this.state after handleLoggedStat: ',this.state);

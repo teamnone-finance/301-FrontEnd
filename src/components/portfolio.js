@@ -47,12 +47,14 @@ export default class Portfolio extends React.Component{
     this.setState({portfolio: portfolio, stocks: listofQuotes});
   }
 
-  handlehide(number) {
+  handlehide(event,number) {
     const cardDisplay = document.getElementById(`card${number}`);
-    if (cardDisplay.style.display === "none") {
-      cardDisplay.style.display = "block";
-    } else {
-      cardDisplay.style.display = "none";
+    if(event.target.nodeName !== 'BUTTON') {    
+      if (cardDisplay.style.height !== '0px'){
+        cardDisplay.style.height = 0;
+      } else {
+        cardDisplay.style.height = '800px';
+      }
     }
   }
 
@@ -69,7 +71,7 @@ export default class Portfolio extends React.Component{
       return (
         <li key={i}>
           <div className="list-container">
-            <ul className="list" id={`list${i}`} onClick={event => this.handlehide(i)}>
+            <ul className="list" id={`list${i}`} onClick={event => this.handlehide(event, i)}>
               <li>{this.state.stocks[i]['symbol']}: {this.state.stocks[i]['companyName']}</li>
               <li>{this.state.stocks[i]['latestPrice']}</li>
               <li  style={{color: this.state.stocks[i]['changePercent'] < 0? 'red' : 'green'}}>{(this.state.stocks[i]['changePercent'] * 100).toFixed(2)}%</li>

@@ -40,8 +40,8 @@ export default class Company extends React.Component {
   constructor(props) {
     super(props);
     this.state = { chartReport: null, companyData: null, 
-      backend: 'https://market-app-backend.herokuapp.com'};
-      // backend: 'http://localhost:3000'};
+      // backend: 'https://market-app-backend.herokuapp.com'};
+      backend: 'http://localhost:3000'};
 
     this.handleSubmit = async (event) => {
       event.preventDefault();
@@ -73,6 +73,7 @@ export default class Company extends React.Component {
 
       console.log('PORTFOLIO POST RES: ',portfolioPostRes.body);
       this.setState({companyData: portfolioPostRes.body});
+      window.location.href='/portfolio';
     }
   }
 

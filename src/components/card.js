@@ -67,7 +67,7 @@ class Card extends React.Component {
 
   render() {
     return (
-      <section className='card'>
+      <section id={`card${this.props.id}`} style = {{'display': 'none'}} className='card'>
       <Chart symbol={this.props.symbol}/>
         <div id='name'>
           <h2>{this.state.symbol}</h2>

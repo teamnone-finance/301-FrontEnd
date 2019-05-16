@@ -69,8 +69,8 @@ export default class Company extends React.Component {
     };
 
     this.drawChartWithProps = async () => {
-      await this.getCompany(this.props.symbol);
-      await this.getRapidReports(this.props.symbol, '1d');
+      await this.getCompany(this.propssymbol);
+      await this.getRapidReports(this.propssymbol, '1d');
     };
   }
 

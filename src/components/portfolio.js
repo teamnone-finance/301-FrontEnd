@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './card.js';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import superagent from 'superagent';
 
@@ -8,9 +9,7 @@ export default class Portfolio extends React.Component{
 
     let portfolio = new Array(10).fill(
       <li>
-        <h4>StockName</h4>
-        Price: $$$
-        <img src="https://via.placeholder.com/80"></img>
+        <Card symbol='AAPL'/>
       </li>
     );
 

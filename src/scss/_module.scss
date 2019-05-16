@@ -1,17 +1,19 @@
 
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Rock+Salt');
+
 #generalNews {
   width: 600px;
   height: 720px;
-  border: 1px solid lightgray;
+  // border: 1px solid lightgray;
   background-color: white;
   overflow: auto;
   word-wrap: break-word;
+  box-shadow: inset 0px 0px 0px 1px lightgrey;
 }
 
 #generalNewsImg {
   width: 200px;
 }
-
 
 #nav li a {
   color: aliceblue;
@@ -26,77 +28,226 @@
     background: aliceblue;
     color: black;
   }
-  
 }
 
-#nav li{
+#nav li {
   display: inline-block;
   margin-top: 1%;
   margin-bottom: 1%;
-  padding-right: 5%; 
+  padding-right: 5%;
 }
 
-#form-section{
+#form-section {
   background-color: darkblue;
   width: 40%;
   display: inline-block;
   padding: 5%;
   border-radius: 2vw;
 
-  & h2{
+  & h2 {
     color: aliceblue;
     padding-bottom: 1vw;
   }
 
-  & input{
+  & input {
     font-size: 1.5vw;
     border-radius: 1vw;
-    padding: .5vw;
+    padding: 0.5vw;
   }
 
-  & button{
+  & button {
     margin-left: 5%;
     font-size: 1.5vw;
-    padding: .5vw;
+    padding: 0.5vw;
     border-radius: 1vw;
   }
 }
 
-#portfolio-h2{
+#portfolio-h2 {
   padding: 2%;
 }
 
-#portfolio{
-  color: darkblue;
-  & ul{
-    
-    & li{
-
-      & h4{
+#portfolio {
+  // color: darkblue;
+  & ul {
+    & li {
+      & h4 {
         display: inline;
         font-size: 1.5vw;
       }
     }
-
   }
 }
 
-#button-add-to-portfolio{
+#name {
+  grid-area: symb;
+  // line-height: 75px;
+}
+#price {
+  grid-area: price;
+  // line-height: 100px;
+}
+#description {
+  margin-top: 5px;
+  grid-area: info;
+}
+#stats {
+  grid-area: list;
+}
+.chartStock {
+  grid-area: chart;
+}
+
+.card {
+  margin: 5px;
+  float: left;
+  display: grid;
+  grid-template-areas:
+    'symb symb price price list list'
+    'chart chart chart chart list list'
+    'chart chart chart chart info info'
+    'chart chart chart chart info info';
+  background-color: tan;
+  border: thin black solid;
+  width: 47vw;
+}
+
+#button-add-to-portfolio {
   padding: 1%;
   border-radius: 20px;
   font-size: 1.5vw;
   margin-bottom: 2%;
-  background-color:lightblue;
+  background-color:darkblue;
+  color: aliceblue;
 
   &:hover {
-    background: darkblue;
-    color:aliceblue;
+    background: aliceblue;
+    color:darkblue;
   }
 }
 
-#search-form{
-  background-color:aliceblue;
-  padding: 2%;
+#input-search{
+  margin-right: 2%;
+  font-size: 1.2vw;
+}
+
+#input-search-submit{
+  font-size:1vw;
+  padding: .5vw 1.5vw .5vw 1.5vw;
+  border-radius: 10%;
+  background-color: darkblue;
+  color: aliceblue;
+}
+
+#label-search{
+  padding-right: 2%;
+}
+
+.persons {
+  width: 70%;
+  margin: 50px auto;
+}
+
+.members {
+  float: left;
+  margin-right: 30px;
+  width: 200px;
+  max-height: 200px;
+  border-radius: 30%;
+}
+
+.name {
+  font-size: 20px;
+  margin: 10px 0px;
+  font-family: 'Cantarell', sans-serif;
+  color: #16191f;
+  font-weight: bold;
+}
+
+.p {
+  line-height: 20px;
+  height: 115px;
+  overflow: scroll;
+  margin-bottom: 10px;
+  color: #16191f;
+  font-family: 'Cantarell', sans-serif;
+}
+
+.aboutb {
+  text-align: right;
+  background: rgba(5, 23, 223, 0.9);
+  color: #fff;
+  border-radius: 2px;
+  border: none;
+  font-size: 15px;
+  padding: 8px 40px;
+  cursor: pointer;
+  transition: hover 350ms;
+  margin-right: 20px;
+  border-radius: 30%;
+}
+
+.aboutb :hover {
+  background: rgba(93, 100, 176, 0.9);
+  transition: all 350ms;
+}
+
+.aboutb a {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Cantarell', sans-serif;
+}
+
+#title {
+  // font-family: 'Permanent Marker', cursive;
+  font-family: 'Rock Salt', cursive;
+  padding-bottom: 2%;
+  padding-top: 1%;
+}
+
+#news {
+
+  & li{
+    padding: 2%;
+    display: block;
+    
+    & a{
+      text-decoration: none;
+      color: darkblue;
+      font-weight: bold;
+    }
+    & p{
+      margin-top: 2%;
+    }
+  }
+
+  #newsDiv{
+    overflow: auto;
+    display: flex;
+
+    & img{
+      float: left;
+      padding: 5px;
+      margin-right: 2%;
+      align-self: flex-start;
+      border-radius: 10%;
+    }
+
+    & p{
+      color: darkblue;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-self: center;
+    }
+  }
+
+    #newsFeedTitle {
+      margin-top: 2%;
+      font-weight: bolder;
+      font-size: 2.5vw;
+      color: darkblue;
+    }
 }
 
 .list {

@@ -5,7 +5,7 @@
 
 #indexChart{
   display: inline-block;
-  padding-right: 5%;
+  // padding-right: 2%;
 }
 
 #feed{
@@ -14,8 +14,7 @@
 
 form{
   background-color: aliceblue;
-  padding-top: 5%;
-  padding-bottom: 15%;
+  padding-top: 2%;
 }
 
 #logout{
@@ -24,6 +23,11 @@ form{
 
 #main{
   position: relative;
-  min-height: 80vh;
+  min-height: 100vh;
   background-color: aliceblue;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
 }

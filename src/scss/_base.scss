@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Cantarell');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 
 
 body{
-  background-color: antiquewhite;
-  // font-family: 'Montserrat', sans-serif;
+  background-color: aliceblue;
   font-family: 'Cantarell', sans-serif;
 }
 
@@ -26,6 +26,7 @@ footer{
   bottom: 0;
   // position: absolute;
   width: 100%;
+  z-index: 1;
 }
 
 

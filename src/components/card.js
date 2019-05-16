@@ -64,33 +64,30 @@ class Card extends React.Component {
 
   render() {
     return (
-      <section id={`card${this.props.id}`} style={{ 'height': '0', 'transition': 'height 1s ease-out', 'overflow': 'hidden' }} className='card'>
-        {/* <div id='name'>
+      <section id={`card${this.props.id}`} style = {{'height': '0', 'transition': 'height 1s ease-out', 'overflow': 'hidden'}} className='card'>
+      <Chart symbol={this.props.symbol}/>
+        <div id='name'>
           <h2>{this.state.symbol}</h2>
           <h4>{this.state.company}</h4>
-        </div> */}
-        {/* <div id='price'>
+        </div>
+        <div id='price'>
           <h2>{this.state.nowPrice}</h2>
-        </div> */}
+        </div>
+        <Chart symbol={this.props.symbol} />
+        <div id='description'>
+          Company Info
+          <p>{this.state.description}</p>
+        </div>
         <div id='stats'>
-          <div>
-            <div id='description'>
-              <h2>{this.state.company}</h2>
-              <p>{this.state.description}</p>
-            </div>
-            <ul id='data'>
-              <li>Open: {this.state.opening} </li>
-              <li>52 Wk High: {this.state.yrHigh} </li>
-              <li>52 Wk Low: {this.state.yrLow} </li>
-              <li>Market Cap: {this.state.mktCap}</li>
-              <li>PE Ratio: {this.state.peRatio} </li>
-              <li>Avg Volume: {this.state.volume} </li>
-              <li>Latest Volume: {this.state.volumeToday}</li>
-            </ul>
-          </div>
-          <div id="chart" style={{ 'width': '750px' }}>
-            <Chart symbol={this.props.symbol} />
-          </div>
+          <ul>
+            <li>Open: {this.state.opening} </li>
+            <li>52 Wk High: {this.state.yrHigh} </li>
+            <li>52 Wk Low: {this.state.yrLow} </li>
+            <li>Market Cap: {this.state.mktCap}</li>
+            <li>PE Ratio: {this.state.peRatio} </li>
+            <li>Avg Volume: {this.state.volume} </li>
+            <li>Latest Volume: {this.state.volumeToday}</li>
+          </ul>
         </div>
       </section>
     );

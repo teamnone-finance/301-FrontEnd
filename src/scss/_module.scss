@@ -113,17 +113,30 @@
   border-radius: 20px;
   font-size: 1.5vw;
   margin-bottom: 2%;
-  background-color: lightblue;
+  background-color:darkblue;
+  color: aliceblue;
 
   &:hover {
-    background: darkblue;
-    color: aliceblue;
+    background: aliceblue;
+    color:darkblue;
   }
 }
 
-#search-form {
-  background-color: aliceblue;
-  padding: 2%;
+#input-search{
+  margin-right: 2%;
+  font-size: 1.2vw;
+}
+
+#input-search-submit{
+  font-size:1vw;
+  padding: .5vw 1.5vw .5vw 1.5vw;
+  border-radius: 10%;
+  background-color: darkblue;
+  color: aliceblue;
+}
+
+#label-search{
+  padding-right: 2%;
 }
 
 .persons {

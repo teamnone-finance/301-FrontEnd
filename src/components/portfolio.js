@@ -53,7 +53,7 @@ export default class Portfolio extends React.Component{
       if (cardDisplay.style.height !== '0px'){
         cardDisplay.style.height = 0;
       } else {
-        cardDisplay.style.height = '800px';
+        cardDisplay.style.height = '550px';
       }
     }
   }
@@ -77,7 +77,7 @@ export default class Portfolio extends React.Component{
               <li  style={{color: this.state.stocks[i]['changePercent'] < 0? 'red' : 'green'}}>{(this.state.stocks[i]['changePercent'] * 100).toFixed(2)}%</li>
               <li>
                 <button onClick={event=> this.handleRemove(i)}>Remove</button>
-                </li>
+              </li>
             </ul>
           </div>
         <Card id={i} symbol={val}/>
@@ -87,13 +87,14 @@ export default class Portfolio extends React.Component{
 
     return(
       <React.Fragment>
+        <div id="main">
         <h2 id="portfolio-h2">My Portfolio</h2>
         <section id="portfolio">
-          <p>Welcome back to your portfolio. I hope all of your stocks were up today and that the bulls are beating the bears. Search for stocks of interest and add or delete from your portfolio.</p>
-          <ul>Placeholder - portfolio name 
+          <ul>
           {portfolio}
           </ul>
         </section>
+        </div>
 
       </React.Fragment>
     );

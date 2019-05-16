@@ -98,3 +98,58 @@
   background-color:aliceblue;
   padding: 2%;
 }
+
+.persons {
+  width: 70%;
+  margin: 50px auto;
+}
+
+.members {
+  float: left;
+  margin-right: 30px;
+  width: 200px;
+  max-height: 200px;
+  border-radius: 30%;
+}
+
+.name {
+  font-size: 20px;
+  margin: 10px 0px;
+  font-family: 'Cantarell', sans-serif;
+  color: #16191f;
+}
+
+.p {
+  line-height: 20px;
+  font-style: italic;
+  height: 115px;
+  overflow: scroll;
+  margin-bottom: 10px;
+  color: #16191f;
+  font-family: 'Cantarell', sans-serif;
+}
+
+.aboutb {
+  text-align: right;
+  background: rgba(5, 23, 223, 0.9);
+  color: #fff;
+  border-radius: 2px;
+  border: none;
+  font-size: 15px;
+  padding: 8px 40px;
+  cursor: pointer;
+  transition: hover 350ms;
+  margin-right: 20px;
+  border-radius: 30%;
+}
+
+.aboutb :hover {
+  background: rgba(5, 23, 223, 0.9);
+  transition: all 350ms;
+}
+
+.aboutb a {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Cantarell', sans-serif;
+}

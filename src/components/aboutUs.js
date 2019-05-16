@@ -12,7 +12,7 @@ export default class AboutUs extends React.Component {
         <>
       <div  id="main">
     <section className='About Us'>
-      <h1>About Us</h1>
+      <h1 id="about-us-title">About Us</h1>
         
     <div className='persons'>
       <section>

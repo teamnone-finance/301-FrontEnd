@@ -18,6 +18,7 @@ export default class Header extends React.Component {
       </div>
       <div>
         <Nav  
+          parentState={this.props.parentState}
           handleLogin={this.props.handleLogin}
           updateState={this.props.updateState}
           loggedIn={this.props.loggedIn}/>

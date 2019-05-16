@@ -46,6 +46,7 @@ export default class Company extends React.Component {
     this.handleSubmit = async (event) => {
       event.preventDefault();
       let symbol = event.target.stock.value;
+      console.log('SYMBOL CLICKED IS: ',symbol);
       await this.getCompany(symbol);
       await this.getRapidReports(symbol, '1d');
     }
@@ -56,17 +57,22 @@ export default class Company extends React.Component {
     }
 
     this.getCompany = async(symbol) => {
-      let companyReport = await superagent.get(`${this.state.backend}/get-company?symbol=${symbol}`);
+      console.log('SYMBOL: ',symbol);
+      let companyReport = await superagent.get(`${this.state.backend}/get-company?symbol=${symbol}`)
+      .catch(err => console.log('Error on get is: ',err));
       console.log(companyReport.body);
       this.setState({companyData: companyReport.body})
     }
 
-    this.addToUserPortfolio = async(symbol) => {
-      let companyReport = await superagent
+    this.addToUserPortfolio = async() => {
+      console.log('PARENT USERNAME: ',this.props.parentState.user.name);
+      let username = localStorage.getItem('username');
+      let portfolioPostRes = await superagent
       .post(`${this.state.backend}/stocks`)
-      .send({ symbol: symbol});
-      console.log(companyReport.body);
-      this.setState({companyData: companyReport.body})
+      .query({ username: username, symbol: this.state.companyData['symbol']});
+
+      console.log('PORTFOLIO POST RES: ',portfolioPostRes.body);
+      this.setState({companyData: portfolioPostRes.body});
     }
   }
 
@@ -94,7 +100,7 @@ export default class Company extends React.Component {
                   <button onClick={event => this.getRapidReports(this.state.companyData['symbol'], '5y')} className="range-toggle">5 year</button>
                 </div>;
         if (localLoggedIn){
-            addToPortfolio = <button id="button-add-to-portfolio" >Add to Portfolio</button>
+            addToPortfolio = <button id="button-add-to-portfolio" onClick={this.addToUserPortfolio}>Add to Portfolio</button>
           // buttonDiv.appendChild(addToPortfolio);
         }
     }

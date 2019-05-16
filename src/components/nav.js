@@ -11,7 +11,9 @@ export default class Nav extends React.Component {
   
   logout = () => {
     localStorage.removeItem('loggedIn');
+    localStorage.removeItem('username');
     this.props.updateState('loggedIn', false);
+
     window.location.href='/';
   };
 
@@ -42,7 +44,14 @@ export default class Nav extends React.Component {
         <Route path="/main" component={Main} />
         <Route path="/about" component={AboutUs} />
         <Route path="/portfolio" component={Portfolio} />
-        <Route path="/search" component={Company} />
+        <Route path="/search" 
+        // component={Company}
+        render={props => (
+          <Company
+            parentState={this.props.parentState}
+          />
+        )} 
+        />
         <Route
             path='/login'
             // component={LoginPage}

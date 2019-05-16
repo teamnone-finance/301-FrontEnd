@@ -40,6 +40,7 @@ class App extends React.Component {
       console.log(`user in db`);
       this.setStateData('loggedIn', true);
       localStorage.setItem('loggedIn', true);
+      localStorage.setItem('username', this.state.user.name);
       // window.location.href='/portfolio';//comment this out if you are checking on log in page
       //load portfolio page
     } else {
@@ -53,6 +54,7 @@ class App extends React.Component {
 
         // window.location.href='/portfolio';//comment this out if you are checking on log in page
         localStorage.setItem('loggedIn', true);
+        localStorage.setItem('username', this.state.user.name);
     }
     console.log('this.state after handleLoggedStat: ',this.state);
   };
@@ -62,7 +64,7 @@ class App extends React.Component {
     return (
       <>
       <Header loggedIn={this.state.user.loggedIn} handleLogin={this.handleLoggedStatus}
-            updateState={this.setStateData}/>
+            updateState={this.setStateData} parentState={this.state}/>
       <Footer />
       </>
     );

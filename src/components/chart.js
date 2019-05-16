@@ -32,8 +32,12 @@ const options = {
         display: false
       }
     }]
+  },
+  elements: {
+    point: {
+      radius: 0
+    }
   }
-
 }
 
 export default class Chart extends React.Component {

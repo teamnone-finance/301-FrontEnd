@@ -8,8 +8,10 @@ export default class Main extends React.Component{
     
     return(
       <>
+      <div id="main">
       {/* <SearchForm callback={this.setStateData} /> */}
       <ChartandFeed />
+      </div>
       </>
     );
   }

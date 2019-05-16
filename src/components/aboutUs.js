@@ -10,6 +10,7 @@ export default class AboutUs extends React.Component {
     
       return (
         <>
+        <div  id="main">
     <section className='About Us'>
       <h1>About Us</h1>
         
@@ -56,6 +57,7 @@ export default class AboutUs extends React.Component {
       </section>
     </div>
     </section>
+    </div>
     </>
     )
   }

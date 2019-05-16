@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import superagent from 'superagent';
 
 const ___API_URL____ = 'http://localhost:3000';
+// const ___API_URL____ = 'https://market-app-backend.herokuapp.com';
 
 export default class Portfolio extends React.Component{
   constructor(props) {
@@ -27,7 +28,7 @@ export default class Portfolio extends React.Component{
     .get(`${___API_URL____}/stocks`)
     .query({ username: username })
     .catch(err => console.log(err));
-    console.log('STOCKS RESPONSE: ',portfolioRes.body.rows);
+    // console.log('STOCKS RESPONSE: ',portfolioRes.body.rows);
 
     let rows = portfolioRes.body.rows;
     let portfolio = rows.map((val)=>{
@@ -41,12 +42,6 @@ export default class Portfolio extends React.Component{
   }
 
   render(){
-
-    // let portfolio = new Array(3).fill(
-    //   <li>
-    //     <Card symbol='AAPL'/>
-    //   </li>
-    // );
 
     let portfolio = this.state.portfolio.map((val,i)=> {
       return <li key={i}>

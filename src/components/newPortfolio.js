@@ -8,7 +8,6 @@ class NewPortfolio extends React.Component {
 
   handleNewPortfolio = e => {
     e.preventDefault();
-    console.log(e.currentTarget[0].value);
   };
 
   render() {

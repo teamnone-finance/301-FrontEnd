@@ -21,7 +21,6 @@ class Card extends React.Component {
   }
 
   updateCardState = async (info, descr) => {
-    console.log(info, descr);
     this.setState({
       company: info.body.companyName,
       symbol: info.body.symbol,
@@ -38,21 +37,17 @@ class Card extends React.Component {
   };
 
   companyInfo = async () => {
-    console.log(`this company info is running`);
     let output = await superagent
       .get('https://market-app-backend.herokuapp.com/get-company')
       .query({ symbol: this.props.symbol })
       .catch(err => console.log(err));
-    console.log(`this is the result of the card query`, output);
     return output;
   };
   cardInfo = async () => {
-    console.log(`this card info is running`);
     let output = await superagent
       .get('https://market-app-backend.herokuapp.com/get-quote')
       .query({ symbol: this.props.symbol })
       .catch(err => console.log(err));
-    console.log(`this is the result of the card query`, output.body);
     return output;
   };
 
@@ -64,14 +59,15 @@ class Card extends React.Component {
 
   render() {
     return (
-      <section id={`card${this.props.id}`} style={{ 'height': '0', 'transition': 'height 1s ease-out', 'overflow': 'hidden' }} className='card'>
-        {/* <div id='name'>
-          <h2>{this.state.symbol}</h2>
-          <h4>{this.state.company}</h4>
-        </div> */}
-        {/* <div id='price'>
-          <h2>{this.state.nowPrice}</h2>
-        </div> */}
+      <section
+        id={`card${this.props.id}`}
+        style={{
+          height: '0',
+          transition: 'height 1s ease-out',
+          overflow: 'hidden'
+        }}
+        className='card'
+      >
         <div id='stats'>
           <div>
             <div id='description'>
@@ -88,7 +84,7 @@ class Card extends React.Component {
               <li>Latest Volume: {this.state.volumeToday}</li>
             </ul>
           </div>
-          <div id="chart" style={{ 'width': '750px' }}>
+          <div id='chart' style={{ width: '750px' }}>
             <Chart symbol={this.props.symbol} />
           </div>
         </div>

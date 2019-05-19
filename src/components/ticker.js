@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default class Ticker extends React.Component {
   constructor(props) {
     super(props);
@@ -11,46 +10,46 @@ export default class Ticker extends React.Component {
         symbols: [
           {
             description: 'Amazon',
-            proName: 'NASDAQ:AMZN',
+            proName: 'NASDAQ:AMZN'
           },
           {
             description: 'Google',
-            proName: 'NASDAQ:GOOG',
+            proName: 'NASDAQ:GOOG'
           },
           {
             description: 'Facebook',
-            proName: 'NASDAQ:FB',
+            proName: 'NASDAQ:FB'
           },
           {
             description: 'Boeing',
-            proName: 'NYSE:BA',
+            proName: 'NYSE:BA'
           },
           {
             description: 'Costco',
-            proName: 'NASDAQ:COST',
+            proName: 'NASDAQ:COST'
           },
           {
             description: 'Microsoft',
-            proName: 'NASDAQ:MSFT',
+            proName: 'NASDAQ:MSFT'
           },
           {
             description: 'Apple',
-            proName: 'NASDAQ:AAPL',
+            proName: 'NASDAQ:AAPL'
           },
           {
             description: 'Oracle',
-            proName: 'NYSE:ORCL',
+            proName: 'NYSE:ORCL'
           },
           {
             description: 'Workday',
-            proName: 'NASDAQ:WDAY',
-          },
+            proName: 'NASDAQ:WDAY'
+          }
         ],
         colorTheme: 'light',
         isTransparent: false,
         displayMode: 'adaptive',
-        locale: 'en',
-      },
+        locale: 'en'
+      }
     };
   }
 
@@ -65,90 +64,9 @@ export default class Ticker extends React.Component {
 
   render() {
     return (
-      <div id="tvs" className="tradingview-widget-container">
-        <div className="tradingview-widget-container__widget" />
-        {/* <div className="tradingview-widget-copyright">
-          <a href="https://www.tradingview.com" rel="noopener" target="_blank">
-            <span className="blue-text">Ticker Tape</span>
-          </a>
-          <span> - by TradingView</span>
-        </div> */}
+      <div id='tvs' className='tradingview-widget-container'>
+        <div className='tradingview-widget-container__widget' />
       </div>
     );
   }
 }
-
-
-
-// export default class Ticker extends React.Component {
-//   componentDidMount() {
-//     if (!window.doBuild) {
-//       this.preLoadScript();
-//     } else {
-//       window.doBuild();
-//     }
-//   }
-  
-//   preLoadScript = () => {
-//     const script = document.createElement('script');
-//     script.async = true;
-//     script.dataset.pinBuild = 'doBuild';
-//     script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
-//     script.textContent = `  {
-//       "symbols": [
-//         {
-//           "description": "Amazon",
-//           "proName": "NASDAQ:AMZN"
-//         },
-//         {
-//           "description": "Google",
-//           "proName": "NASDAQ:GOOG"
-//         },
-//         {
-//           "description": "Facebook",
-//           "proName": "NASDAQ:FB"
-//         },
-//         {
-//           "description": "Boeing",
-//           "proName": "NYSE:BA"
-//         },
-//         {
-//           "description": "Costco",
-//           "proName": "NASDAQ:COST"
-//         },
-//         {
-//           "description": "Microsoft",
-//           "proName": "NASDAQ:MSFT"
-//         },
-//         {
-//           "description": "Apple",
-//           "proName": "NASDAQ:AAPL"
-//         },
-//         {
-//           "description": "Oracle",
-//           "proName": "NYSE:ORCL"
-//         },
-//         {
-//           "description": "Workday",
-//           "proName": "NASDAQ:WDAY"
-//         }
-//       ],
-//       "colorTheme": "light",
-//       "isTransparent": false,
-//       "displayMode": "adaptive",
-//       "locale": "en"
-//     }`;
-//     const ticker = document.getElementById('ticker');
-//     ticker.appendChild(script);
-//     console.log(script);
-//   }
-
-//   render() {
-
-//     console.log('this.props in ticker.js',this.props);
-
-//     return (
-//       <a ></a>
-//     )
-//   }
-// }

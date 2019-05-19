@@ -1,38 +1,36 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Cantarell');
 
-body{
+body {
   background-color: aliceblue;
   font-family: 'Cantarell', sans-serif;
 }
 
-header{
+header {
   padding-top: 1vw;
   text-align: center;
 }
 
-h1 a{
+h1 a {
   font-size: 3vw;
   text-decoration: none;
 }
 
-footer{
+footer {
   background-color: darkblue;
   text-align: center;
   color: aliceblue;
   line-height: 4vw;
   bottom: 0;
-  // position: absolute;
   width: 100%;
   z-index: 1;
 }
 
-
-h2{
+h2 {
   font-size: 2vw;
   text-align: center;
 }
 
-p{
+p {
   text-align: center;
 }

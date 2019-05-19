@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react';
 import superagent from 'superagent';
-import Search from './search-form';
 import { Line } from 'react-chartjs-2';
-import SearchForm from './search-form.js';
-import Card from './card.js';
 
 function createChart(label, data, symbol) {
   return {
@@ -14,10 +11,9 @@ function createChart(label, data, symbol) {
         backgroundColor: 'rgba(255,200,255,1)',
         fillColor: 'rgba(255,255,255,255.2)',
         strokeColor: 'rgba(255,255,255,1)',
-        // pointColor: 'rgba(220,220,220,1)',
-        data: data,
+        data: data
       }
-    ],
+    ]
   };
 }
 
@@ -39,11 +35,11 @@ const options = {
     ]
   },
   elements: {
-  point: {
+    point: {
       radius: 0
     }
   }
-}
+};
 
 export default class Chart extends React.Component {
   constructor(props) {
@@ -57,7 +53,6 @@ export default class Chart extends React.Component {
 
   load = () => {
     let symbol = this.props.symbol;
-    // let symbol = 'AAPL';
     this.getCompany(symbol);
     this.getRapidReports(symbol, '1d');
   };
@@ -68,7 +63,6 @@ export default class Chart extends React.Component {
         `${this.state.backend}/get-stocks-chart?symbol=${symbol}&time=${time}`
       )
       .catch(err => console.log(err));
-    console.log('DAILY REPORT: RAPID REPORTS: ', dailyReport);
     this.setState({ chartReport: dailyReport.body });
   };
 
@@ -76,7 +70,6 @@ export default class Chart extends React.Component {
     let companyReport = await superagent
       .get(`${this.state.backend}/get-company?symbol=${symbol}`)
       .catch(err => console.log(err));
-    console.log(companyReport.body);
     this.setState({ companyData: companyReport.body });
   };
 
@@ -89,8 +82,7 @@ export default class Chart extends React.Component {
     let chart;
     let time;
     let data;
-    if (this.state.chartReport !== null && this.state.companyData !==null) {
-      console.log(this.state.chartReport);
+    if (this.state.chartReport !== null && this.state.companyData !== null) {
       time = this.state.chartReport
         .filter(object => object['close'] > 0)
         .map(object => object['label']);
@@ -99,12 +91,19 @@ export default class Chart extends React.Component {
         .map(object => object['close']);
       chart = (
         <div id='stockChart' style={{ width: '100%', margin: '50px auto' }}>
-          <Line data={createChart(time, data, this.state.companyData['symbol'])} options={options} />
+          <Line
+            data={createChart(time, data, this.state.companyData['symbol'])}
+            options={options}
+          />
         </div>
       );
       buttons = (
-        <div className="button-align" style={{ width: '100%', margin: '10px auto'}}>
-          <button className="button-align"
+        <div
+          className='button-align'
+          style={{ width: '100%', margin: '10px auto' }}
+        >
+          <button
+            className='button-align'
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '1d')
             }
@@ -112,7 +111,8 @@ export default class Chart extends React.Component {
           >
             1 day
           </button>
-          <button className="button-align"
+          <button
+            className='button-align'
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '1m')
             }
@@ -120,7 +120,8 @@ export default class Chart extends React.Component {
           >
             1 month
           </button>
-          <button className="button-align"
+          <button
+            className='button-align'
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '3m')
             }
@@ -128,7 +129,8 @@ export default class Chart extends React.Component {
           >
             3 month
           </button>
-          <button className="button-align"
+          <button
+            className='button-align'
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '6m')
             }
@@ -136,7 +138,8 @@ export default class Chart extends React.Component {
           >
             6 month
           </button>
-          <button className="button-align"
+          <button
+            className='button-align'
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '1y')
             }
@@ -144,7 +147,8 @@ export default class Chart extends React.Component {
           >
             1 year
           </button>
-          <button className="button-align"
+          <button
+            className='button-align'
             onClick={event =>
               this.getRapidReports(this.state.companyData['symbol'], '5y')
             }
